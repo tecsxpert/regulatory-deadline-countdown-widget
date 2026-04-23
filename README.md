@@ -15,12 +15,20 @@ Backend work for internship capstone project.
 - Created `RegulatoryDeadlineRepository`
 - Added custom query methods
 
-## Backend Files
+### Day 3
+- Implemented service layer
+- Added business logic
+- Added input validation
+- Added custom exception classes
 
-- `backend/pom.xml`
-- `backend/src/main/resources/application.yml`
-- `backend/src/main/java/com/internship/tool/Tool87BackendApplication.java`
-- `backend/src/main/java/com/internship/tool/entity/RegulatoryDeadline.java`
-- `backend/src/main/java/com/internship/tool/repository/RegulatoryDeadlineRepository.java`
+### Day 4
+- Built REST controller
+- Added `GET /all` with pagination
+- Added `GET /{id}` with 404 handling
+- Added `POST /create` with `@Valid`
+- Added correct status codes
+
+
+
 
 
