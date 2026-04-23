@@ -1,27 +1,26 @@
 # Tool-87 Regulatory Deadline Countdown Widget
 
-Day 1 setup for the internship capstone project.
+Backend work for internship capstone project.
 
-## Folder Structure
+## Completed
 
-```text
-tool-87-capstone/
-|-- backend/
-|-- ai-service/
-|-- frontend/
-|-- docker-compose.yml
-|-- .env.example
-+-- README.md
-```
-
-## Day 1 Completed
-
-- Created the project folder structure from the PDF
-- Set up the Spring Boot backend skeleton
+### Day 1
+- Set up Spring Boot backend
 - Added `pom.xml`
-- Added `application.yml` with environment variable placeholders
+- Added `application.yml` with environment variables
 
-## Next Steps
+### Day 2
+- Created JPA entity `RegulatoryDeadline`
+- Added `@Column`, `@CreatedDate`, and `@LastModifiedDate`
+- Created `RegulatoryDeadlineRepository`
+- Added custom query methods
 
-- Day 2: Create JPA entity and repository
-- Day 3: Implement service layer
+## Backend Files
+
+- `backend/pom.xml`
+- `backend/src/main/resources/application.yml`
+- `backend/src/main/java/com/internship/tool/Tool87BackendApplication.java`
+- `backend/src/main/java/com/internship/tool/entity/RegulatoryDeadline.java`
+- `backend/src/main/java/com/internship/tool/repository/RegulatoryDeadlineRepository.java`
+
+
