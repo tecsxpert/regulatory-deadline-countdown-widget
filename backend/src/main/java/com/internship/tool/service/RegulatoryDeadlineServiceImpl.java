@@ -28,6 +28,15 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class RegulatoryDeadlineServiceImpl implements RegulatoryDeadlineService {
 
+    private static final Set<String> ALLOWED_SORT_FIELDS = Set.of(
+            "deadlineDate",
+            "title",
+            "regulatoryBody",
+            "priority",
+            "status",
+            "createdAt"
+    );
+
     private static final List<DeadlineStatus> OVERDUE_TRACKABLE_STATUSES = List.of(
             DeadlineStatus.UPCOMING,
             DeadlineStatus.IN_PROGRESS
@@ -100,6 +109,8 @@ public class RegulatoryDeadlineServiceImpl implements RegulatoryDeadlineService 
     @Transactional(readOnly = true)
     @Cacheable(value = "deadlinesPage", key = "T(String).format('%s-%s-%s', #page, #size, #sortBy)")
     public Page<RegulatoryDeadline> getAllActiveDeadlines(int page, int size, String sortBy) {
+        validatePagination(page, size);
+        validateSortField(sortBy);
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
         return regulatoryDeadlineRepository.findAllByActiveTrue(pageable);
     }
@@ -214,6 +225,25 @@ public class RegulatoryDeadlineServiceImpl implements RegulatoryDeadlineService 
             if (!(url.startsWith("http://") || url.startsWith("https://"))) {
                 throw new InvalidDeadlineDataException("Reference URL must start with http:// or https://");
             }
+        }
+    }
+
+    private void validatePagination(int page, int size) {
+        if (page < 0) {
+            throw new InvalidDeadlineDataException("Page number must not be negative");
+        }
+        if (size <= 0) {
+            throw new InvalidDeadlineDataException("Page size must be greater than zero");
+        }
+    }
+
+    private void validateSortField(String sortBy) {
+        if (sortBy == null || sortBy.isBlank()) {
+            throw new InvalidDeadlineDataException("Sort field is required");
+        }
+
+        if (!ALLOWED_SORT_FIELDS.contains(sortBy.trim())) {
+            throw new InvalidDeadlineDataException("Unsupported sort field: " + sortBy);
         }
     }
 

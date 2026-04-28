@@ -13,6 +13,7 @@ import static org.mockito.Mockito.when;
 import com.internship.tool.entity.DeadlinePriority;
 import com.internship.tool.entity.DeadlineStatus;
 import com.internship.tool.entity.RegulatoryDeadline;
+import com.internship.tool.exception.DeadlineOperationException;
 import com.internship.tool.exception.DuplicateDeadlineException;
 import com.internship.tool.exception.InvalidDeadlineDataException;
 import com.internship.tool.exception.ResourceNotFoundException;
@@ -25,6 +26,8 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -156,6 +159,83 @@ class RegulatoryDeadlineServiceImplTest {
         assertFalse(deadline.getActive());
         assertEquals(DeadlineStatus.ARCHIVED, deadline.getStatus());
         verify(regulatoryDeadlineRepository).save(deadline);
+    }
+
+    @Test
+    void createDeadlineShouldRejectInactivePayload() {
+        RegulatoryDeadline deadline = buildDeadline();
+        deadline.setActive(Boolean.FALSE);
+        when(regulatoryDeadlineRepository.existsByTitleIgnoreCaseAndRegulatoryBodyIgnoreCaseAndDeadlineDate(
+                deadline.getTitle(),
+                deadline.getRegulatoryBody(),
+                deadline.getDeadlineDate()
+        )).thenReturn(false);
+
+        assertThrows(DeadlineOperationException.class, () -> regulatoryDeadlineService.createDeadline(deadline));
+
+        verify(regulatoryDeadlineRepository, never()).save(any(RegulatoryDeadline.class));
+    }
+
+    @Test
+    void getAllActiveDeadlinesShouldRejectNegativePage() {
+        assertThrows(InvalidDeadlineDataException.class, () -> regulatoryDeadlineService.getAllActiveDeadlines(-1, 10, "deadlineDate"));
+    }
+
+    @Test
+    void getAllActiveDeadlinesShouldRejectZeroSize() {
+        assertThrows(InvalidDeadlineDataException.class, () -> regulatoryDeadlineService.getAllActiveDeadlines(0, 0, "deadlineDate"));
+    }
+
+    @Test
+    void getAllActiveDeadlinesShouldRejectUnsupportedSortField() {
+        assertThrows(InvalidDeadlineDataException.class, () -> regulatoryDeadlineService.getAllActiveDeadlines(0, 10, "invalidSort"));
+    }
+
+    @Test
+    void getAllActiveDeadlinesShouldReturnRepositoryPage() {
+        RegulatoryDeadline deadline = buildDeadline();
+        Page<RegulatoryDeadline> page = new PageImpl<>(List.of(deadline));
+        when(regulatoryDeadlineRepository.findAllByActiveTrue(any(Pageable.class))).thenReturn(page);
+
+        Page<RegulatoryDeadline> result = regulatoryDeadlineService.getAllActiveDeadlines(0, 10, "deadlineDate");
+
+        assertEquals(1, result.getTotalElements());
+        verify(regulatoryDeadlineRepository).findAllByActiveTrue(any(Pageable.class));
+    }
+
+    @Test
+    void searchDeadlinesShouldTrimKeywordBeforeSearching() {
+        Page<RegulatoryDeadline> page = new PageImpl<>(List.of(buildDeadline()));
+        when(regulatoryDeadlineRepository.searchActiveByKeyword(any(String.class), any(Pageable.class))).thenReturn(page);
+
+        Page<RegulatoryDeadline> result = regulatoryDeadlineService.searchDeadlines("  gdpr  ", PageRequest.of(0, 10));
+
+        assertEquals(1, result.getTotalElements());
+        verify(regulatoryDeadlineRepository).searchActiveByKeyword("gdpr", PageRequest.of(0, 10));
+    }
+
+    @Test
+    void updateDeadlineShouldPersistSanitizedValues() {
+        RegulatoryDeadline existing = buildDeadline();
+        existing.setId(20L);
+        RegulatoryDeadline updatePayload = buildDeadline();
+        updatePayload.setTitle("  Updated Filing  ");
+        updatePayload.setResponsibleTeam("  Updated Team  ");
+        updatePayload.setOwnerEmail("  updated@example.com  ");
+        when(regulatoryDeadlineRepository.findByIdAndActiveTrue(20L)).thenReturn(Optional.of(existing));
+        when(regulatoryDeadlineRepository.existsByTitleIgnoreCaseAndRegulatoryBodyIgnoreCaseAndDeadlineDateAndIdNot(
+                "Updated Filing",
+                updatePayload.getRegulatoryBody(),
+                updatePayload.getDeadlineDate(),
+                20L
+        )).thenReturn(false);
+        when(regulatoryDeadlineRepository.save(any(RegulatoryDeadline.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        RegulatoryDeadline updated = regulatoryDeadlineService.updateDeadline(20L, updatePayload);
+
+        assertEquals("Updated Filing", updated.getTitle());
+        assertEquals("Updated Team", updated.getResponsibleTeam());
+        assertEquals("updated@example.com", updated.getOwnerEmail());
     }
 
     private RegulatoryDeadline buildDeadline() {
