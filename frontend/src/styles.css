@@ -2,16 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --brand-primary: #1b4f8a;
+  --grid-unit: 8px;
+}
+
 html {
-  background: #f7f5ef;
+  background: #f5f8fc;
 }
 
 body {
   margin: 0;
-  font-family: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: #0f172a;
 }
 
 * {
   box-sizing: border-box;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  min-height: 44px;
 }
