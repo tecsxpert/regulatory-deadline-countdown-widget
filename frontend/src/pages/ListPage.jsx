@@ -5,18 +5,15 @@ function ListPage({ setEditData, setPage, setSelectedId }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔎 Search + Filters
+  // 🔎 Filters
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [status, setStatus] = useState("");
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
 
-  // 📄 Pagination
-  const [pageNum, setPageNum] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
+  // 🤖 AI state
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiResponse, setAiResponse] = useState(null);
 
-  // ⏱ Debounce search (500ms)
+  // ⏱ Debounce
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(search);
@@ -29,28 +26,17 @@ function ListPage({ setEditData, setPage, setSelectedId }) {
   const fetchData = () => {
     setLoading(true);
 
-    API.get("/search", {
-      params: {
-        q: debouncedSearch,
-        status: status,
-        fromDate: fromDate,
-        toDate: toDate,
-        page: pageNum,
-        size: 5,
-      },
-    })
+    API.get("/all")
       .then((res) => {
-        const content = res.data.content || res.data;
-        setData(content);
-        setTotalPages(res.data.totalPages || 1);
+        setData(res.data || []);
       })
-      .catch((err) => console.error("Fetch error:", err))
+      .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   };
 
   useEffect(() => {
     fetchData();
-  }, [debouncedSearch, status, fromDate, toDate, pageNum]);
+  }, [debouncedSearch]);
 
   // ❌ Delete
   const handleDelete = (id) => {
@@ -58,149 +44,111 @@ function ListPage({ setEditData, setPage, setSelectedId }) {
       .then(() => {
         alert("Deleted successfully");
         fetchData();
-      })
-      .catch((err) => console.error(err));
+      });
   };
 
-  // 🔄 Loading state
-  if (loading) {
-    return <p className="text-center mt-10">Loading...</p>;
-  }
+  // 🤖 AI CALL
+  const handleAI = (item) => {
+    setAiLoading(true);
+    setAiResponse(null);
+
+    API.post("/ai/recommend", item)
+      .then((res) => {
+        setAiResponse(res.data);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setAiLoading(false));
+  };
+
+  if (loading) return <p className="text-center mt-10">Loading...</p>;
 
   return (
     <div className="p-5">
 
-      <h2 className="text-xl font-bold mb-4">
-        Regulatory Deadlines
-      </h2>
+      <h2 className="text-xl font-bold mb-4">Regulatory Deadlines</h2>
 
-      {/* 🔎 FILTER BAR */}
-      <div className="flex flex-wrap gap-3 mb-4">
+      {/* 🔎 Search */}
+      <input
+        placeholder="Search..."
+        onChange={(e) => setSearch(e.target.value)}
+        className="border p-2 mb-4"
+      />
 
-        {/* Search */}
-        <input
-          type="text"
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="border p-2"
-        />
+      {/* 📊 Table */}
+      <table className="w-full border">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Deadline</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-        {/* Status */}
-        <select
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-          className="border p-2"
-        >
-          <option value="">All Status</option>
-          <option value="UPCOMING">UPCOMING</option>
-          <option value="COMPLETED">COMPLETED</option>
-        </select>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item.id}>
 
-        {/* From Date */}
-        <input
-          type="date"
-          value={fromDate}
-          onChange={(e) => setFromDate(e.target.value)}
-          className="border p-2"
-        />
+              <td>{item.title}</td>
+              <td>{item.regulationType}</td>
+              <td>{item.deadlineDate}</td>
+              <td>{item.status}</td>
+              <td>{item.priority}</td>
 
-        {/* To Date */}
-        <input
-          type="date"
-          value={toDate}
-          onChange={(e) => setToDate(e.target.value)}
-          className="border p-2"
-        />
+              <td>
 
-      </div>
+                <button onClick={() => {
+                  setSelectedId(item.id);
+                  setPage("detail");
+                }}>
+                  View
+                </button>
 
-      {/* 📊 TABLE */}
-      {data.length === 0 ? (
-        <p className="text-center mt-5">No records found</p>
-      ) : (
-        <table className="w-full border border-gray-300">
-          <thead className="bg-gray-200">
-            <tr>
-              <th className="p-2 border">Title</th>
-              <th className="p-2 border">Type</th>
-              <th className="p-2 border">Deadline</th>
-              <th className="p-2 border">Status</th>
-              <th className="p-2 border">Priority</th>
-              <th className="p-2 border">Actions</th>
+                <button onClick={() => {
+                  setEditData(item);
+                  setPage("form");
+                }}>
+                  Edit
+                </button>
+
+                <button onClick={() => handleDelete(item.id)}>
+                  Delete
+                </button>
+
+                {/* 🤖 AI BUTTON */}
+                <button onClick={() => handleAI(item)}>
+                  AI Recommend
+                </button>
+
+              </td>
+
             </tr>
-          </thead>
+          ))}
+        </tbody>
+      </table>
 
-          <tbody>
-            {data.map((item) => (
-              <tr key={item.id}>
-                <td className="p-2 border">{item.title}</td>
-                <td className="p-2 border">{item.regulationType}</td>
-                <td className="p-2 border">{item.deadlineDate}</td>
-                <td className="p-2 border">{item.status}</td>
-                <td className="p-2 border">{item.priority}</td>
-
-                <td className="p-2 border">
-
-                  {/* 👁 View */}
-                  <button
-                    onClick={() => {
-                      setSelectedId(item.id);
-                      setPage("detail");
-                    }}
-                    className="bg-blue-500 text-white px-2 py-1 mr-2"
-                  >
-                    View
-                  </button>
-
-                  {/* ✏️ Edit */}
-                  <button
-                    onClick={() => {
-                      setEditData(item);
-                      setPage("form");
-                    }}
-                    className="bg-yellow-500 text-white px-2 py-1 mr-2"
-                  >
-                    Edit
-                  </button>
-
-                  {/* ❌ Delete */}
-                  <button
-                    onClick={() => handleDelete(item.id)}
-                    className="bg-red-500 text-white px-2 py-1"
-                  >
-                    Delete
-                  </button>
-
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* 🤖 AI LOADING */}
+      {aiLoading && (
+        <p className="mt-4 text-center">Loading AI response...</p>
       )}
 
-      {/* 📄 PAGINATION */}
-      <div className="mt-4 flex justify-center items-center space-x-3">
-        <button
-          onClick={() => setPageNum(pageNum - 1)}
-          disabled={pageNum === 0}
-          className="bg-gray-300 px-3 py-1"
-        >
-          Prev
-        </button>
+      {/* 🤖 AI RESPONSE */}
+      {aiResponse && (
+        <div className="mt-4 border p-3 bg-gray-100">
+          <h3 className="font-bold">AI Recommendations</h3>
 
-        <span>
-          Page {pageNum + 1} of {totalPages}
-        </span>
-
-        <button
-          onClick={() => setPageNum(pageNum + 1)}
-          disabled={pageNum + 1 >= totalPages}
-          className="bg-gray-300 px-3 py-1"
-        >
-          Next
-        </button>
-      </div>
+          {aiResponse.map((rec, i) => (
+            <div key={i}>
+              <p><b>Action:</b> {rec.action_type}</p>
+              <p><b>Description:</b> {rec.description}</p>
+              <p><b>Priority:</b> {rec.priority}</p>
+              <hr />
+            </div>
+          ))}
+        </div>
+      )}
 
     </div>
   );
