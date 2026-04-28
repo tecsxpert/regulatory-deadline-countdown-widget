@@ -8,12 +8,22 @@ function ListPage({ setEditData, setPage, setSelectedId }) {
   // 🔎 Filters
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [status, setStatus] = useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
 
-  // 🤖 AI state
+  // 📄 Pagination
+  const [pageNum, setPageNum] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
+
+  // 🤖 AI
   const [aiLoading, setAiLoading] = useState(false);
   const [aiResponse, setAiResponse] = useState(null);
 
-  // ⏱ Debounce
+  // 📤 Upload
+  const [file, setFile] = useState(null);
+
+  // ⏱ Debounce search
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(search);
@@ -26,9 +36,20 @@ function ListPage({ setEditData, setPage, setSelectedId }) {
   const fetchData = () => {
     setLoading(true);
 
-    API.get("/all")
+    API.get("/search", {
+      params: {
+        q: debouncedSearch,
+        status,
+        fromDate,
+        toDate,
+        page: pageNum,
+        size: 5,
+      },
+    })
       .then((res) => {
-        setData(res.data || []);
+        const content = res.data.content || res.data;
+        setData(content);
+        setTotalPages(res.data.totalPages || 1);
       })
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
@@ -36,7 +57,7 @@ function ListPage({ setEditData, setPage, setSelectedId }) {
 
   useEffect(() => {
     fetchData();
-  }, [debouncedSearch]);
+  }, [debouncedSearch, status, fromDate, toDate, pageNum]);
 
   // ❌ Delete
   const handleDelete = (id) => {
@@ -44,20 +65,39 @@ function ListPage({ setEditData, setPage, setSelectedId }) {
       .then(() => {
         alert("Deleted successfully");
         fetchData();
-      });
+      })
+      .catch((err) => console.error(err));
   };
 
-  // 🤖 AI CALL
+  // 🤖 AI
   const handleAI = (item) => {
     setAiLoading(true);
     setAiResponse(null);
 
     API.post("/ai/recommend", item)
-      .then((res) => {
-        setAiResponse(res.data);
-      })
+      .then((res) => setAiResponse(res.data))
       .catch((err) => console.error(err))
       .finally(() => setAiLoading(false));
+  };
+
+  // 📤 Upload
+  const handleUpload = () => {
+    if (!file) return alert("Select file first");
+
+    if (file.type !== "text/csv") {
+      return alert("Only CSV allowed");
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+      return alert("File too large (max 2MB)");
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    API.post("/upload", formData)
+      .then(() => alert("Uploaded successfully"))
+      .catch(() => alert("Upload failed"));
   };
 
   if (loading) return <p className="text-center mt-10">Loading...</p>;
@@ -67,74 +107,107 @@ function ListPage({ setEditData, setPage, setSelectedId }) {
 
       <h2 className="text-xl font-bold mb-4">Regulatory Deadlines</h2>
 
-      {/* 🔎 Search */}
-      <input
-        placeholder="Search..."
-        onChange={(e) => setSearch(e.target.value)}
-        className="border p-2 mb-4"
-      />
+      {/* 🔎 FILTER BAR */}
+      <div className="flex flex-wrap gap-3 mb-4">
 
-      {/* 📊 Table */}
-      <table className="w-full border">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Type</th>
-            <th>Deadline</th>
-            <th>Status</th>
-            <th>Priority</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+        <input
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="border p-2"
+        />
 
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
+        <select value={status} onChange={(e) => setStatus(e.target.value)} className="border p-2">
+          <option value="">All Status</option>
+          <option value="UPCOMING">UPCOMING</option>
+          <option value="COMPLETED">COMPLETED</option>
+        </select>
 
-              <td>{item.title}</td>
-              <td>{item.regulationType}</td>
-              <td>{item.deadlineDate}</td>
-              <td>{item.status}</td>
-              <td>{item.priority}</td>
+        <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} className="border p-2" />
+        <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} className="border p-2" />
 
-              <td>
+        {/* 📥 Export */}
+        <button
+          onClick={() => window.open("http://localhost:8080/export")}
+          className="bg-green-500 text-white px-3 py-1"
+        >
+          Export CSV
+        </button>
+      </div>
 
-                <button onClick={() => {
-                  setSelectedId(item.id);
-                  setPage("detail");
-                }}>
-                  View
-                </button>
+      {/* 📤 Upload */}
+      <div className="mb-4">
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <button
+          onClick={handleUpload}
+          className="bg-blue-500 text-white px-3 py-1 ml-2"
+        >
+          Upload CSV
+        </button>
+      </div>
 
-                <button onClick={() => {
-                  setEditData(item);
-                  setPage("form");
-                }}>
-                  Edit
-                </button>
-
-                <button onClick={() => handleDelete(item.id)}>
-                  Delete
-                </button>
-
-                {/* 🤖 AI BUTTON */}
-                <button onClick={() => handleAI(item)}>
-                  AI Recommend
-                </button>
-
-              </td>
-
+      {/* 📊 TABLE */}
+      {data.length === 0 ? (
+        <p className="text-center">No records found</p>
+      ) : (
+        <table className="w-full border">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Type</th>
+              <th>Deadline</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
 
-      {/* 🤖 AI LOADING */}
-      {aiLoading && (
-        <p className="mt-4 text-center">Loading AI response...</p>
+          <tbody>
+            {data.map((item) => (
+              <tr key={item.id}>
+
+                <td>{item.title}</td>
+                <td>{item.regulationType}</td>
+                <td>{item.deadlineDate}</td>
+                <td>{item.status}</td>
+                <td>{item.priority}</td>
+
+                <td>
+
+                  <button onClick={() => {
+                    setSelectedId(item.id);
+                    setPage("detail");
+                  }}>
+                    View
+                  </button>
+
+                  <button onClick={() => {
+                    setEditData(item);
+                    setPage("form");
+                  }}>
+                    Edit
+                  </button>
+
+                  <button onClick={() => handleDelete(item.id)}>
+                    Delete
+                  </button>
+
+                  <button onClick={() => handleAI(item)}>
+                    AI Recommend
+                  </button>
+
+                </td>
+
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
 
-      {/* 🤖 AI RESPONSE */}
+      {/* 🤖 LOADING */}
+      {aiLoading && <p className="mt-4">Loading AI response...</p>}
+
+      {/* 🤖 RESPONSE */}
       {aiResponse && (
         <div className="mt-4 border p-3 bg-gray-100">
           <h3 className="font-bold">AI Recommendations</h3>
@@ -149,6 +222,19 @@ function ListPage({ setEditData, setPage, setSelectedId }) {
           ))}
         </div>
       )}
+
+      {/* 📄 Pagination */}
+      <div className="mt-4 flex justify-center space-x-3">
+        <button onClick={() => setPageNum(pageNum - 1)} disabled={pageNum === 0}>
+          Prev
+        </button>
+
+        <span>Page {pageNum + 1} of {totalPages}</span>
+
+        <button onClick={() => setPageNum(pageNum + 1)} disabled={pageNum + 1 >= totalPages}>
+          Next
+        </button>
+      </div>
 
     </div>
   );
