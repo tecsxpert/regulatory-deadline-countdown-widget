@@ -1,53 +1,48 @@
 import { useState } from "react";
+import API from "../services/api";
 
 function ForgotPassword({ setPage }) {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [msg, setMsg] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!email) {
-      setError("Please enter your email");
+      setMsg("Please enter email");
       return;
     }
 
-    setError("");
-    setSuccess("");
-
-    // 🔵 Simulate API + email sending
-    setTimeout(() => {
-      setSuccess("Reset link sent to your email (demo)");
-
-      // 👉 simulate clicking email link after 1.5 sec
-      setTimeout(() => {
+    API.post("/auth/forgot-password", { email })
+      .then((res) => {
+        setMsg("Reset link generated! Check alert.");
+        alert("Reset Link:\n" + res.data.link);
         setPage("reset");
-      }, 1500);
-    }, 800);
+      })
+      .catch(() => setMsg("User not found"));
   };
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
 
-      {/* 🔵 LEFT SIDE */}
+      {/* LEFT SIDE */}
       <div className="hidden md:flex w-1/2 bg-gradient-to-br from-blue-600 to-indigo-700 text-white items-center justify-center p-10">
         <div>
-          <h1 className="text-5xl font-bold mb-4 leading-tight">
+          <h1 className="text-4xl font-bold mb-4">
             Regulatory Tracker
           </h1>
-          <p className="text-lg text-blue-100 max-w-md">
+          <p className="text-lg text-blue-100">
             Reset your password securely and continue managing deadlines.
           </p>
         </div>
       </div>
 
-      {/* ⚪ RIGHT SIDE */}
+      {/* RIGHT SIDE */}
       <div className="flex w-full md:w-1/2 items-center justify-center bg-gray-100 p-6">
 
-        <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-sm border border-gray-100">
+        <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-sm">
 
-          <h2 className="text-2xl font-bold text-center mb-2">
+          <h2 className="text-2xl font-bold text-center mb-3">
             Forgot Password
           </h2>
 
@@ -55,21 +50,12 @@ function ForgotPassword({ setPage }) {
             Enter your email to receive reset link
           </p>
 
-          {/* ❌ ERROR */}
-          {error && (
-            <div className="bg-red-100 text-red-600 text-sm p-2 rounded mb-4 text-center">
-              {error}
+          {msg && (
+            <div className="bg-blue-100 text-blue-600 p-2 rounded text-sm mb-4 text-center">
+              {msg}
             </div>
           )}
 
-          {/* ✅ SUCCESS */}
-          {success && (
-            <div className="bg-green-100 text-green-600 text-sm p-2 rounded mb-4 text-center">
-              {success}
-            </div>
-          )}
-
-          {/* FORM */}
           <form onSubmit={handleSubmit} className="space-y-4">
 
             <input
@@ -77,22 +63,18 @@ function ForgotPassword({ setPage }) {
               placeholder="Enter Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500"
             />
 
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold"
-            >
+            <button className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700">
               Send Reset Link
             </button>
 
           </form>
 
-          {/* BACK */}
           <p
             onClick={() => setPage("login")}
-            className="text-center mt-5 text-blue-500 cursor-pointer hover:underline"
+            className="text-center mt-4 text-blue-500 cursor-pointer hover:underline"
           >
             Back to Login
           </p>

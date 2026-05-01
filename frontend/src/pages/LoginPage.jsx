@@ -13,27 +13,27 @@ function LoginPage({ setPage }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ const handleSubmit = (e) => {
+  e.preventDefault();
 
-    if (!form.username || !form.password) {
-      setError("Please fill all fields");
-      return;
-    }
+  if (!form.username || !form.password) {
+    setError("Please fill all fields");
+    return;
+  }
 
-    setLoading(true);
-    setError("");
+  setLoading(true);
+  setError("");
 
-    API.post("/login", form)
-      .then((res) => {
-        login(res.data.token);
-        setPage("dashboard");
-      })
-      .catch(() => {
-        setError("Invalid username or password");
-      })
-      .finally(() => setLoading(false));
-  };
+  API.post("/login", form)
+    .then((res) => {
+      login(res.data.token);   // backend JWT
+      setPage("dashboard");
+    })
+    .catch(() => {
+      setError("Invalid username or password");
+    })
+    .finally(() => setLoading(false));
+};
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row">

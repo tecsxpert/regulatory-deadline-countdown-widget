@@ -7,6 +7,7 @@ import DetailPage from "./pages/DetailPage";
 import Analytics from "./pages/Analytics";
 import RegisterPage from "./pages/RegisterPage";
 import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthProvider from "./context/AuthContext";
 
@@ -41,19 +42,20 @@ function App() {
         {page === "login" && <LoginPage setPage={setPage} />}
         {page === "register" && <RegisterPage setPage={setPage} />}
         {page === "forgot" && <ForgotPassword setPage={setPage} />}
+        {page === "reset" && <ResetPassword setPage={setPage} />}
 
         {/* 🌐 NAVBAR */}
-        {!["login", "register", "forgot"].includes(page) && (
+        {!["login", "register", "forgot", "reset"].includes(page) && (
           <div className="bg-white shadow p-4 flex justify-between items-center">
 
-            {/* LEFT */}
+            {/* LEFT NAV */}
             <div className="flex gap-3">
               {navBtn("dashboard", "Dashboard")}
               {navBtn("list", "Deadlines")}
               {navBtn("analytics", "Analytics")}
             </div>
 
-            {/* RIGHT */}
+            {/* RIGHT LOGOUT */}
             <button
               onClick={handleLogout}
               className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
@@ -67,7 +69,7 @@ function App() {
         {/* 📊 DASHBOARD */}
         {page === "dashboard" && (
           <ProtectedRoute>
-            <Dashboard />
+            <Dashboard setPage={setPage} />
           </ProtectedRoute>
         )}
 

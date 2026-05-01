@@ -17,7 +17,7 @@ CREATE TABLE regulatory_deadlines (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Indexes for better performance
+-- Indexes
 CREATE INDEX idx_deadline_date ON regulatory_deadlines(deadline_date);
 CREATE INDEX idx_status ON regulatory_deadlines(status);
 CREATE INDEX idx_regulation_type ON regulatory_deadlines(regulation_type);

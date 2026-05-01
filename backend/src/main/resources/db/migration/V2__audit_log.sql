@@ -5,7 +5,7 @@ CREATE TABLE audit_log (
     entity_id INT,
     entity_name VARCHAR(100),
 
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX idx_audit_entity ON audit_log(entity_id);

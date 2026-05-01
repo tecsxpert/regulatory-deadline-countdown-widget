@@ -3,7 +3,7 @@ import API from "../services/api";
 
 function FormPage({ editData, setPage }) {
 
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     title: "",
     description: "",
     regulationType: "",
@@ -12,145 +12,129 @@ function FormPage({ editData, setPage }) {
     priority: "MEDIUM",
   });
 
-  // 🔁 Prefill
+  const [error, setError] = useState("");
+
+  // 🔁 Prefill for edit
   useEffect(() => {
     if (editData) {
-      setFormData(editData);
+      setForm(editData);
     }
   }, [editData]);
 
-  // 🔄 Change
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setForm({
+      ...form,
       [e.target.name]: e.target.value,
     });
   };
 
-  // ✅ Submit
+  // ✅ VALIDATION
+  const validate = () => {
+    if (!form.title.trim()) return "Title is required";
+    if (!form.deadlineDate) return "Deadline date required";
+    if (new Date(form.deadlineDate) < new Date())
+      return "Deadline cannot be past date";
+
+    return "";
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.title || !formData.deadlineDate) {
-      alert("Title and Deadline are required");
+    const validationError = validate();
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
+    setError("");
+
     if (editData) {
-      API.put(`/update/${editData.id}`, formData)
+      API.put(`/${editData.id}`, form)
         .then(() => {
           alert("Updated successfully");
           setPage("list");
         })
-        .catch(() => alert("Update failed"));
+        .catch(() => setError("Update failed"));
     } else {
-      API.post("/create", formData)
+      API.post("/create", form)
         .then(() => {
           alert("Created successfully");
           setPage("list");
         })
-        .catch(() => alert("Create failed"));
+        .catch(() => setError("Create failed"));
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-6 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center p-6">
 
-      {/* 🔹 CARD */}
-      <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-xl">
+      <div className="bg-white p-8 rounded-xl shadow w-full max-w-xl">
 
-        <h2 className="text-2xl font-bold text-center mb-6">
+        <h2 className="text-xl font-bold mb-4 text-center">
           {editData ? "Edit Deadline" : "Create Deadline"}
         </h2>
 
+        {error && (
+          <div className="bg-red-100 text-red-600 p-2 mb-4 rounded text-center">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
 
-          {/* TITLE */}
           <input
             name="title"
-            value={formData.title}
-            onChange={handleChange}
             placeholder="Title"
-            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={form.title}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
           />
 
-          {/* DESCRIPTION */}
           <textarea
             name="description"
-            value={formData.description}
-            onChange={handleChange}
             placeholder="Description"
-            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={form.description}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
           />
 
-          {/* TYPE */}
           <input
             name="regulationType"
-            value={formData.regulationType}
-            onChange={handleChange}
             placeholder="Regulation Type"
-            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={form.regulationType}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
           />
 
-          {/* DATE */}
           <input
             type="date"
             name="deadlineDate"
-            value={formData.deadlineDate}
+            value={form.deadlineDate}
             onChange={handleChange}
-            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border p-3 rounded"
           />
 
-          {/* DROPDOWNS */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="UPCOMING">UPCOMING</option>
-              <option value="COMPLETED">COMPLETED</option>
+          <div className="grid grid-cols-2 gap-3">
+            <select name="status" value={form.status} onChange={handleChange} className="border p-3 rounded">
+              <option>UPCOMING</option>
+              <option>COMPLETED</option>
             </select>
 
-            <select
-              name="priority"
-              value={formData.priority}
-              onChange={handleChange}
-              className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="LOW">LOW</option>
-              <option value="MEDIUM">MEDIUM</option>
-              <option value="HIGH">HIGH</option>
+            <select name="priority" value={form.priority} onChange={handleChange} className="border p-3 rounded">
+              <option>LOW</option>
+              <option>MEDIUM</option>
+              <option>HIGH</option>
             </select>
-
           </div>
 
-          {/* BUTTONS */}
-          <div className="flex gap-3">
-
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold"
-            >
-              {editData ? "Update" : "Create"}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setPage("list")}
-              className="w-full bg-gray-300 py-3 rounded-lg hover:bg-gray-400"
-            >
-              Cancel
-            </button>
-
-          </div>
+          <button className="w-full bg-blue-600 text-white py-3 rounded">
+            {editData ? "Update" : "Create"}
+          </button>
 
         </form>
 
       </div>
-
     </div>
   );
 }

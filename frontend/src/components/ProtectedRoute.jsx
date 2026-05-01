@@ -1,17 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-function ProtectedRoute({ children, setPage }) {
+function ProtectedRoute({ children }) {
   const { token } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (!token) {
-      setPage("login"); // 🔥 proper redirect
-    }
-  }, [token]);
-
   if (!token) {
-    return null;
+    return <p className="text-center mt-10">Unauthorized</p>;
   }
 
   return children;

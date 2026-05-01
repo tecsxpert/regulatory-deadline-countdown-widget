@@ -13,6 +13,7 @@ function AuthProvider({ children }) {
   const logout = () => {
     localStorage.removeItem("token");
     setToken(null);
+    window.location.reload();
   };
 
   return (

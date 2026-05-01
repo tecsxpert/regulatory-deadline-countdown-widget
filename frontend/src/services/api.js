@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "http://localhost:8080", // 🔥 your Spring Boot URL
 });
 
-// 🔐 Attach token automatically
+// 🔐 Attach token
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
@@ -15,22 +15,15 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-// 🚨 Handle errors globally
+// 🚨 Handle 401
 API.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    // 🔥 If token expired or unauthorized
-    if (error.response && error.response.status === 401) {
-      console.log("Session expired. Logging out...");
-
-      // remove token
+  (res) => res,
+  (err) => {
+    if (err.response && err.response.status === 401) {
       localStorage.removeItem("token");
-
-      // redirect to login
       window.location.reload();
     }
-
-    return Promise.reject(error);
+    return Promise.reject(err);
   }
 );
 
