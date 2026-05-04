@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: regulatory-deadline-widget
+    env: python
+    plan: free
+    buildCommand: pip install -r ai-service/requirements.txt
+    startCommand: gunicorn --chdir ai-service app:app
