@@ -1,0 +1,641 @@
+2026-05-03 20:24:19,202 -  * Debugger is active!
+2026-05-03 20:24:19,204 -  * Debugger PIN: 181-716-772
+2026-05-03 20:24:24,679 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 20:24:24,679 - [33mPress CTRL+C to quit[0m
+2026-05-03 20:24:24,680 -  * Restarting with stat
+2026-05-03 20:24:25,059 -  * Debugger is active!
+2026-05-03 20:24:25,061 -  * Debugger PIN: 181-716-772
+2026-05-03 20:26:13,166 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 20:26:13,167 - [33mPress CTRL+C to quit[0m
+2026-05-03 20:26:13,184 -  * Restarting with stat
+2026-05-03 20:26:13,601 -  * Debugger is active!
+2026-05-03 20:26:13,602 -  * Debugger PIN: 181-716-772
+2026-05-03 20:27:29,325 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 20:27:29,325 - [33mPress CTRL+C to quit[0m
+2026-05-03 20:27:29,326 -  * Restarting with stat
+2026-05-03 20:27:29,693 -  * Debugger is active!
+2026-05-03 20:27:29,695 -  * Debugger PIN: 181-716-772
+2026-05-03 20:29:48,876 - 127.0.0.1 - - [03/May/2026 20:29:48] "GET / HTTP/1.1" 200 -
+2026-05-03 20:31:47,515 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:31:47,524 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:31:47,581 -  * Restarting with stat
+2026-05-03 20:31:47,899 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:31:47,966 -  * Restarting with stat
+2026-05-03 20:31:48,101 -  * Debugger is active!
+2026-05-03 20:31:48,103 -  * Debugger PIN: 181-716-772
+2026-05-03 20:31:48,109 -  * Debugger is active!
+2026-05-03 20:31:48,112 -  * Debugger PIN: 181-716-772
+2026-05-03 20:31:48,480 -  * Debugger is active!
+2026-05-03 20:31:48,482 -  * Debugger PIN: 181-716-772
+2026-05-03 20:32:01,235 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 20:32:01,236 - [33mPress CTRL+C to quit[0m
+2026-05-03 20:32:01,237 -  * Restarting with stat
+2026-05-03 20:32:01,669 -  * Debugger is active!
+2026-05-03 20:32:01,672 -  * Debugger PIN: 181-716-772
+2026-05-03 20:32:11,191 - 127.0.0.1 - - [03/May/2026 20:32:11] "GET / HTTP/1.1" 200 -
+2026-05-03 20:33:13,100 - 127.0.0.1 - - [03/May/2026 20:33:13] "[31m[1mPOST /deadline HTTP/1.1[0m" 400 -
+2026-05-03 20:33:47,786 - 127.0.0.1 - - [03/May/2026 20:33:47] "[31m[1mPOST /deadline HTTP/1.1[0m" 400 -
+2026-05-03 20:35:12,063 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 20:35:12,063 - [33mPress CTRL+C to quit[0m
+2026-05-03 20:35:12,065 -  * Restarting with stat
+2026-05-03 20:35:12,455 -  * Debugger is active!
+2026-05-03 20:35:12,456 -  * Debugger PIN: 181-716-772
+2026-05-03 20:35:30,503 - 127.0.0.1 - - [03/May/2026 20:35:30] "GET / HTTP/1.1" 200 -
+2026-05-03 20:35:31,123 - 127.0.0.1 - - [03/May/2026 20:35:31] "GET / HTTP/1.1" 200 -
+2026-05-03 20:35:31,322 - 127.0.0.1 - - [03/May/2026 20:35:31] "GET / HTTP/1.1" 200 -
+2026-05-03 20:35:31,549 - 127.0.0.1 - - [03/May/2026 20:35:31] "GET / HTTP/1.1" 200 -
+2026-05-03 20:35:53,221 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:35:53,222 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:35:53,285 -  * Restarting with stat
+2026-05-03 20:35:53,701 -  * Debugger is active!
+2026-05-03 20:35:53,703 -  * Debugger PIN: 181-716-772
+2026-05-03 20:35:53,703 -  * Debugger is active!
+2026-05-03 20:35:53,705 -  * Debugger PIN: 181-716-772
+2026-05-03 20:35:53,818 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:35:53,819 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:35:53,828 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:35:53,885 -  * Restarting with stat
+2026-05-03 20:35:53,892 -  * Restarting with stat
+2026-05-03 20:35:53,898 -  * Restarting with stat
+2026-05-03 20:35:54,407 -  * Debugger is active!
+2026-05-03 20:35:54,408 -  * Debugger is active!
+2026-05-03 20:35:54,411 -  * Debugger PIN: 181-716-772
+2026-05-03 20:35:54,411 -  * Debugger PIN: 181-716-772
+2026-05-03 20:35:54,425 -  * Debugger is active!
+2026-05-03 20:35:54,428 -  * Debugger PIN: 181-716-772
+2026-05-03 20:36:26,540 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 20:36:26,540 - [33mPress CTRL+C to quit[0m
+2026-05-03 20:36:26,543 -  * Restarting with stat
+2026-05-03 20:36:26,956 -  * Debugger is active!
+2026-05-03 20:36:26,958 -  * Debugger PIN: 181-716-772
+2026-05-03 20:37:33,236 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 20:37:33,236 - [33mPress CTRL+C to quit[0m
+2026-05-03 20:37:33,237 -  * Restarting with stat
+2026-05-03 20:37:33,672 -  * Debugger is active!
+2026-05-03 20:37:33,674 -  * Debugger PIN: 181-716-772
+2026-05-03 20:38:34,908 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:38:34,917 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:38:34,924 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:38:34,924 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:38:34,929 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:38:34,960 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:38:35,041 -  * Restarting with stat
+2026-05-03 20:38:35,041 -  * Restarting with stat
+2026-05-03 20:38:35,080 -  * Restarting with stat
+2026-05-03 20:38:35,084 -  * Restarting with stat
+2026-05-03 20:38:35,091 -  * Restarting with stat
+2026-05-03 20:38:35,300 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 20:38:35,396 -  * Restarting with stat
+2026-05-03 20:38:35,765 -  * Debugger is active!
+2026-05-03 20:38:35,766 -  * Debugger is active!
+2026-05-03 20:38:35,766 -  * Debugger is active!
+2026-05-03 20:38:35,767 -  * Debugger is active!
+2026-05-03 20:38:35,768 -  * Debugger PIN: 181-716-772
+2026-05-03 20:38:35,769 -  * Debugger is active!
+2026-05-03 20:38:35,769 -  * Debugger PIN: 181-716-772
+2026-05-03 20:38:35,771 -  * Debugger PIN: 181-716-772
+2026-05-03 20:38:35,771 -  * Debugger PIN: 181-716-772
+2026-05-03 20:38:35,774 -  * Debugger is active!
+2026-05-03 20:38:35,774 -  * Debugger PIN: 181-716-772
+2026-05-03 20:38:35,777 -  * Debugger PIN: 181-716-772
+2026-05-03 20:38:36,005 -  * Debugger is active!
+2026-05-03 20:38:36,006 -  * Debugger PIN: 181-716-772
+2026-05-03 20:38:47,502 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 20:38:47,502 - [33mPress CTRL+C to quit[0m
+2026-05-03 20:38:47,503 -  * Restarting with stat
+2026-05-03 20:38:47,939 -  * Debugger is active!
+2026-05-03 20:38:47,941 -  * Debugger PIN: 181-716-772
+2026-05-03 20:39:22,835 - 127.0.0.1 - - [03/May/2026 20:39:22] "GET / HTTP/1.1" 200 -
+2026-05-03 20:39:24,826 - 127.0.0.1 - - [03/May/2026 20:39:24] "GET / HTTP/1.1" 200 -
+2026-05-03 21:01:30,156 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:01:30,156 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:01:30,157 -  * Restarting with stat
+2026-05-03 21:01:30,571 -  * Debugger is active!
+2026-05-03 21:01:30,573 -  * Debugger PIN: 181-716-772
+2026-05-03 21:01:42,895 - 127.0.0.1 - - [03/May/2026 21:01:42] "GET / HTTP/1.1" 200 -
+2026-05-03 21:01:43,853 - 127.0.0.1 - - [03/May/2026 21:01:43] "GET / HTTP/1.1" 200 -
+2026-05-03 21:02:17,274 - 127.0.0.1 - - [03/May/2026 21:02:17] "GET / HTTP/1.1" 200 -
+2026-05-03 21:02:19,328 - 127.0.0.1 - - [03/May/2026 21:02:19] "GET / HTTP/1.1" 200 -
+2026-05-03 21:02:20,007 - 127.0.0.1 - - [03/May/2026 21:02:20] "GET / HTTP/1.1" 200 -
+2026-05-03 21:02:20,227 - 127.0.0.1 - - [03/May/2026 21:02:20] "GET / HTTP/1.1" 200 -
+2026-05-03 21:04:05,354 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:04:05,370 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:04:05,375 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:04:05,397 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:04:05,399 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:04:05,470 -  * Restarting with stat
+2026-05-03 21:04:05,480 -  * Restarting with stat
+2026-05-03 21:04:05,497 -  * Restarting with stat
+2026-05-03 21:04:05,502 -  * Restarting with stat
+2026-05-03 21:04:06,063 -  * Debugger is active!
+2026-05-03 21:04:06,063 -  * Debugger is active!
+2026-05-03 21:04:06,064 -  * Debugger is active!
+2026-05-03 21:04:06,066 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:06,066 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:06,067 -  * Debugger is active!
+2026-05-03 21:04:06,067 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:06,069 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:06,072 -  * Debugger is active!
+2026-05-03 21:04:06,074 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:06,157 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:04:06,166 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:04:06,169 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:04:06,253 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:04:06,266 -  * Restarting with stat
+2026-05-03 21:04:06,274 -  * Restarting with stat
+2026-05-03 21:04:06,282 -  * Restarting with stat
+2026-05-03 21:04:06,338 -  * Restarting with stat
+2026-05-03 21:04:06,831 -  * Debugger is active!
+2026-05-03 21:04:06,834 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:06,834 -  * Debugger is active!
+2026-05-03 21:04:06,836 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:06,839 -  * Debugger is active!
+2026-05-03 21:04:06,841 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:06,894 -  * Debugger is active!
+2026-05-03 21:04:06,899 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:12,867 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:04:12,867 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:04:12,868 -  * Restarting with stat
+2026-05-03 21:04:13,291 -  * Debugger is active!
+2026-05-03 21:04:13,292 -  * Debugger PIN: 181-716-772
+2026-05-03 21:04:18,962 - 127.0.0.1 - - [03/May/2026 21:04:18] "GET / HTTP/1.1" 200 -
+2026-05-03 21:06:05,568 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:05,606 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:05,626 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:05,638 -  * Restarting with stat
+2026-05-03 21:06:05,666 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:05,667 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:05,684 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:05,699 -  * Restarting with stat
+2026-05-03 21:06:05,727 -  * Restarting with stat
+2026-05-03 21:06:05,760 -  * Restarting with stat
+2026-05-03 21:06:05,768 -  * Restarting with stat
+2026-05-03 21:06:05,785 -  * Restarting with stat
+2026-05-03 21:06:05,995 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:06,097 -  * Restarting with stat
+2026-05-03 21:06:06,418 -  * Debugger is active!
+2026-05-03 21:06:06,423 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:06,425 -  * Debugger is active!
+2026-05-03 21:06:06,429 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:06,454 -  * Debugger is active!
+2026-05-03 21:06:06,459 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:06,476 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:06,483 -  * Debugger is active!
+2026-05-03 21:06:06,485 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:06,488 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:06,498 -  * Debugger is active!
+2026-05-03 21:06:06,499 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:06:06,503 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:06,516 -  * Debugger is active!
+2026-05-03 21:06:06,522 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:06,589 -  * Restarting with stat
+2026-05-03 21:06:06,600 -  * Restarting with stat
+2026-05-03 21:06:06,845 -  * Debugger is active!
+2026-05-03 21:06:06,847 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:07,204 -  * Debugger is active!
+2026-05-03 21:06:07,206 -  * Debugger is active!
+2026-05-03 21:06:07,207 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:07,208 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:07,217 -  * Debugger is active!
+2026-05-03 21:06:07,222 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:41,582 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:06:41,582 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:06:41,583 -  * Restarting with stat
+2026-05-03 21:06:41,962 -  * Debugger is active!
+2026-05-03 21:06:41,963 -  * Debugger PIN: 181-716-772
+2026-05-03 21:06:57,397 - 127.0.0.1 - - [03/May/2026 21:06:57] "GET / HTTP/1.1" 200 -
+2026-05-03 21:07:53,436 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:07:53,436 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:07:53,437 -  * Restarting with stat
+2026-05-03 21:07:53,834 -  * Debugger is active!
+2026-05-03 21:07:53,835 -  * Debugger PIN: 181-716-772
+2026-05-03 21:08:00,204 - 127.0.0.1 - - [03/May/2026 21:08:00] "GET / HTTP/1.1" 200 -
+2026-05-03 21:08:52,964 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:08:52,965 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:08:52,965 -  * Restarting with stat
+2026-05-03 21:08:53,304 -  * Debugger is active!
+2026-05-03 21:08:53,305 -  * Debugger PIN: 181-716-772
+2026-05-03 21:08:59,013 - 127.0.0.1 - - [03/May/2026 21:08:59] "GET / HTTP/1.1" 200 -
+2026-05-03 21:08:59,109 - 127.0.0.1 - - [03/May/2026 21:08:59] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:09:54,841 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:09:54,841 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:09:54,843 -  * Restarting with stat
+2026-05-03 21:09:55,230 -  * Debugger is active!
+2026-05-03 21:09:55,231 -  * Debugger PIN: 181-716-772
+2026-05-03 21:09:59,564 - 127.0.0.1 - - [03/May/2026 21:09:59] "GET / HTTP/1.1" 200 -
+2026-05-03 21:10:00,229 - 127.0.0.1 - - [03/May/2026 21:10:00] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:10:39,332 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,337 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,358 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,360 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,367 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,373 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,382 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,381 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,387 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,389 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,415 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,496 -  * Restarting with stat
+2026-05-03 21:10:39,497 -  * Restarting with stat
+2026-05-03 21:10:39,504 -  * Restarting with stat
+2026-05-03 21:10:39,516 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,520 -  * Restarting with stat
+2026-05-03 21:10:39,525 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,541 -  * Restarting with stat
+2026-05-03 21:10:39,546 -  * Restarting with stat
+2026-05-03 21:10:39,567 -  * Restarting with stat
+2026-05-03 21:10:39,577 -  * Restarting with stat
+2026-05-03 21:10:39,593 -  * Restarting with stat
+2026-05-03 21:10:39,594 -  * Restarting with stat
+2026-05-03 21:10:39,648 -  * Restarting with stat
+2026-05-03 21:10:39,657 -  * Restarting with stat
+2026-05-03 21:10:39,798 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:10:39,933 -  * Restarting with stat
+2026-05-03 21:10:40,662 -  * Debugger is active!
+2026-05-03 21:10:40,666 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,690 -  * Debugger is active!
+2026-05-03 21:10:40,695 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,703 -  * Debugger is active!
+2026-05-03 21:10:40,707 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,710 -  * Debugger is active!
+2026-05-03 21:10:40,716 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,766 -  * Debugger is active!
+2026-05-03 21:10:40,770 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,774 -  * Debugger is active!
+2026-05-03 21:10:40,776 -  * Debugger is active!
+2026-05-03 21:10:40,779 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,782 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,791 -  * Debugger is active!
+2026-05-03 21:10:40,797 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,825 -  * Debugger is active!
+2026-05-03 21:10:40,831 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,860 -  * Debugger is active!
+2026-05-03 21:10:40,866 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,951 -  * Debugger is active!
+2026-05-03 21:10:40,955 -  * Debugger is active!
+2026-05-03 21:10:40,955 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:40,960 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:41,002 -  * Debugger is active!
+2026-05-03 21:10:41,007 -  * Debugger PIN: 181-716-772
+2026-05-03 21:10:41,078 -  * Debugger is active!
+2026-05-03 21:10:41,083 -  * Debugger PIN: 181-716-772
+2026-05-03 21:14:21,090 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,110 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,115 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,132 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,148 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,153 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,161 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,208 -  * Restarting with stat
+2026-05-03 21:14:21,231 -  * Restarting with stat
+2026-05-03 21:14:21,237 -  * Restarting with stat
+2026-05-03 21:14:21,252 -  * Restarting with stat
+2026-05-03 21:14:21,266 -  * Restarting with stat
+2026-05-03 21:14:21,274 -  * Restarting with stat
+2026-05-03 21:14:21,278 -  * Restarting with stat
+2026-05-03 21:14:21,953 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,954 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,957 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,962 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,964 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:21,982 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:22,002 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:14:22,071 -  * Restarting with stat
+2026-05-03 21:14:22,079 -  * Restarting with stat
+2026-05-03 21:14:22,080 -  * Restarting with stat
+2026-05-03 21:14:22,081 -  * Restarting with stat
+2026-05-03 21:14:22,100 -  * Restarting with stat
+2026-05-03 21:14:22,113 -  * Restarting with stat
+2026-05-03 21:16:20,416 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:16:20,417 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:16:20,417 -  * Restarting with stat
+2026-05-03 21:16:20,754 -  * Debugger is active!
+2026-05-03 21:16:20,756 -  * Debugger PIN: 181-716-772
+2026-05-03 21:16:24,888 - 127.0.0.1 - - [03/May/2026 21:16:24] "GET / HTTP/1.1" 200 -
+2026-05-03 21:16:24,922 - 127.0.0.1 - - [03/May/2026 21:16:24] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:16:27,320 - 127.0.0.1 - - [03/May/2026 21:16:27] "GET / HTTP/1.1" 200 -
+2026-05-03 21:16:27,339 - 127.0.0.1 - - [03/May/2026 21:16:27] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:16:28,456 - 127.0.0.1 - - [03/May/2026 21:16:28] "GET / HTTP/1.1" 200 -
+2026-05-03 21:16:28,483 - 127.0.0.1 - - [03/May/2026 21:16:28] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:16:29,658 - 127.0.0.1 - - [03/May/2026 21:16:29] "GET / HTTP/1.1" 200 -
+2026-05-03 21:16:29,686 - 127.0.0.1 - - [03/May/2026 21:16:29] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:16:30,273 - 127.0.0.1 - - [03/May/2026 21:16:30] "GET / HTTP/1.1" 200 -
+2026-05-03 21:16:30,305 - 127.0.0.1 - - [03/May/2026 21:16:30] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:16:30,448 - 127.0.0.1 - - [03/May/2026 21:16:30] "GET / HTTP/1.1" 200 -
+2026-05-03 21:16:30,472 - 127.0.0.1 - - [03/May/2026 21:16:30] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:16:30,673 - 127.0.0.1 - - [03/May/2026 21:16:30] "GET / HTTP/1.1" 200 -
+2026-05-03 21:16:30,705 - 127.0.0.1 - - [03/May/2026 21:16:30] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:17:10,901 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:17:10,901 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:17:10,902 -  * Restarting with stat
+2026-05-03 21:17:11,219 -  * Debugger is active!
+2026-05-03 21:17:11,220 -  * Debugger PIN: 181-716-772
+2026-05-03 21:17:17,418 - 127.0.0.1 - - [03/May/2026 21:17:17] "GET / HTTP/1.1" 200 -
+2026-05-03 21:17:17,446 - 127.0.0.1 - - [03/May/2026 21:17:17] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:17:18,700 - 127.0.0.1 - - [03/May/2026 21:17:18] "GET / HTTP/1.1" 200 -
+2026-05-03 21:17:18,721 - 127.0.0.1 - - [03/May/2026 21:17:18] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:17:19,612 - 127.0.0.1 - - [03/May/2026 21:17:19] "GET / HTTP/1.1" 200 -
+2026-05-03 21:17:19,633 - 127.0.0.1 - - [03/May/2026 21:17:19] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:18:03,876 - 127.0.0.1 - - [03/May/2026 21:18:03] "GET / HTTP/1.1" 200 -
+2026-05-03 21:18:03,904 - 127.0.0.1 - - [03/May/2026 21:18:03] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:18:05,470 - 127.0.0.1 - - [03/May/2026 21:18:05] "GET / HTTP/1.1" 200 -
+2026-05-03 21:18:05,504 - 127.0.0.1 - - [03/May/2026 21:18:05] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:07,688 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:19:07,743 -  * Restarting with stat
+2026-05-03 21:19:08,197 -  * Debugger is active!
+2026-05-03 21:19:08,199 -  * Debugger PIN: 181-716-772
+2026-05-03 21:19:08,315 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-03 21:19:08,370 -  * Restarting with stat
+2026-05-03 21:19:08,730 -  * Debugger is active!
+2026-05-03 21:19:08,732 -  * Debugger PIN: 181-716-772
+2026-05-03 21:19:17,497 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:19:17,498 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:19:17,500 -  * Restarting with stat
+2026-05-03 21:19:17,808 -  * Debugger is active!
+2026-05-03 21:19:17,809 -  * Debugger PIN: 181-716-772
+2026-05-03 21:19:22,723 - 127.0.0.1 - - [03/May/2026 21:19:22] "GET / HTTP/1.1" 200 -
+2026-05-03 21:19:22,814 - 127.0.0.1 - - [03/May/2026 21:19:22] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:24,609 - 127.0.0.1 - - [03/May/2026 21:19:24] "GET / HTTP/1.1" 200 -
+2026-05-03 21:19:24,638 - 127.0.0.1 - - [03/May/2026 21:19:24] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:25,228 - 127.0.0.1 - - [03/May/2026 21:19:25] "GET / HTTP/1.1" 200 -
+2026-05-03 21:19:25,254 - 127.0.0.1 - - [03/May/2026 21:19:25] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:25,398 - 127.0.0.1 - - [03/May/2026 21:19:25] "GET / HTTP/1.1" 200 -
+2026-05-03 21:19:25,422 - 127.0.0.1 - - [03/May/2026 21:19:25] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:25,579 - 127.0.0.1 - - [03/May/2026 21:19:25] "GET / HTTP/1.1" 200 -
+2026-05-03 21:19:25,604 - 127.0.0.1 - - [03/May/2026 21:19:25] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:25,759 - 127.0.0.1 - - [03/May/2026 21:19:25] "GET / HTTP/1.1" 200 -
+2026-05-03 21:19:25,785 - 127.0.0.1 - - [03/May/2026 21:19:25] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:25,986 - 127.0.0.1 - - [03/May/2026 21:19:25] "GET / HTTP/1.1" 200 -
+2026-05-03 21:19:26,009 - 127.0.0.1 - - [03/May/2026 21:19:26] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:50,934 - 127.0.0.1 - - [03/May/2026 21:19:50] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:51,188 - 127.0.0.1 - - [03/May/2026 21:19:51] "GET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-05-03 21:19:51,189 - 127.0.0.1 - - [03/May/2026 21:19:51] "GET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-05-03 21:19:51,227 - 127.0.0.1 - - [03/May/2026 21:19:51] "GET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1" 200 -
+2026-05-03 21:19:51,236 - 127.0.0.1 - - [03/May/2026 21:19:51] "GET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-05-03 21:19:55,674 - 127.0.0.1 - - [03/May/2026 21:19:55] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:19:55,685 - 127.0.0.1 - - [03/May/2026 21:19:55] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:19:55,690 - 127.0.0.1 - - [03/May/2026 21:19:55] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:19:55,704 - 127.0.0.1 - - [03/May/2026 21:19:55] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:19:55,712 - 127.0.0.1 - - [03/May/2026 21:19:55] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:20:18,305 - 127.0.0.1 - - [03/May/2026 21:20:18] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:20:18,314 - 127.0.0.1 - - [03/May/2026 21:20:18] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:20:18,315 - 127.0.0.1 - - [03/May/2026 21:20:18] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:20:18,320 - 127.0.0.1 - - [03/May/2026 21:20:18] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:20:18,338 - 127.0.0.1 - - [03/May/2026 21:20:18] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:24:47,633 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:24:47,634 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:24:47,636 -  * Restarting with stat
+2026-05-03 21:24:47,937 -  * Debugger is active!
+2026-05-03 21:24:47,939 -  * Debugger PIN: 181-716-772
+2026-05-03 21:24:51,298 - 127.0.0.1 - - [03/May/2026 21:24:51] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:24:51,308 - 127.0.0.1 - - [03/May/2026 21:24:51] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:24:51,310 - 127.0.0.1 - - [03/May/2026 21:24:51] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:24:51,315 - 127.0.0.1 - - [03/May/2026 21:24:51] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:24:51,326 - 127.0.0.1 - - [03/May/2026 21:24:51] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:24:52,532 - 127.0.0.1 - - [03/May/2026 21:24:52] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:24:52,548 - 127.0.0.1 - - [03/May/2026 21:24:52] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:24:52,552 - 127.0.0.1 - - [03/May/2026 21:24:52] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:24:52,566 - 127.0.0.1 - - [03/May/2026 21:24:52] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:24:52,578 - 127.0.0.1 - - [03/May/2026 21:24:52] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:26:53,135 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:26:53,136 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:26:53,136 -  * Restarting with stat
+2026-05-03 21:26:53,431 -  * Debugger is active!
+2026-05-03 21:26:53,432 -  * Debugger PIN: 181-716-772
+2026-05-03 21:26:59,035 - 127.0.0.1 - - [03/May/2026 21:26:59] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:26:59,046 - 127.0.0.1 - - [03/May/2026 21:26:59] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:26:59,047 - 127.0.0.1 - - [03/May/2026 21:26:59] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:26:59,061 - 127.0.0.1 - - [03/May/2026 21:26:59] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:26:59,073 - 127.0.0.1 - - [03/May/2026 21:26:59] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:38:34,321 - 127.0.0.1 - - [03/May/2026 21:38:34] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:38:34,331 - 127.0.0.1 - - [03/May/2026 21:38:34] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:38:34,332 - 127.0.0.1 - - [03/May/2026 21:38:34] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:38:34,342 - 127.0.0.1 - - [03/May/2026 21:38:34] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:38:34,350 - 127.0.0.1 - - [03/May/2026 21:38:34] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:38:35,707 - 127.0.0.1 - - [03/May/2026 21:38:35] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:38:35,717 - 127.0.0.1 - - [03/May/2026 21:38:35] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:38:35,719 - 127.0.0.1 - - [03/May/2026 21:38:35] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:38:35,728 - 127.0.0.1 - - [03/May/2026 21:38:35] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:38:35,740 - 127.0.0.1 - - [03/May/2026 21:38:35] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:38:36,386 - 127.0.0.1 - - [03/May/2026 21:38:36] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:38:36,395 - 127.0.0.1 - - [03/May/2026 21:38:36] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:38:36,396 - 127.0.0.1 - - [03/May/2026 21:38:36] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:38:36,401 - 127.0.0.1 - - [03/May/2026 21:38:36] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:38:36,411 - 127.0.0.1 - - [03/May/2026 21:38:36] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:38:51,701 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-03 21:38:51,701 - [33mPress CTRL+C to quit[0m
+2026-05-03 21:38:51,703 -  * Restarting with stat
+2026-05-03 21:38:52,234 -  * Debugger is active!
+2026-05-03 21:38:52,238 -  * Debugger PIN: 181-716-772
+2026-05-03 21:39:41,747 - 127.0.0.1 - - [03/May/2026 21:39:41] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:39:41,761 - 127.0.0.1 - - [03/May/2026 21:39:41] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:39:41,765 - 127.0.0.1 - - [03/May/2026 21:39:41] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:39:41,781 - 127.0.0.1 - - [03/May/2026 21:39:41] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,023 - 127.0.0.1 - - [03/May/2026 21:39:44] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:39:44,032 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,035 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,043 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,050 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,263 - 127.0.0.1 - - [03/May/2026 21:39:44] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:39:44,272 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,274 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,284 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,295 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,424 - 127.0.0.1 - - [03/May/2026 21:39:44] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:39:44,432 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,435 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,443 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,450 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,612 - 127.0.0.1 - - [03/May/2026 21:39:44] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:39:44,620 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,622 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,627 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,635 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,787 - 127.0.0.1 - - [03/May/2026 21:39:44] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:39:44,795 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,796 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,802 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,811 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,975 - 127.0.0.1 - - [03/May/2026 21:39:44] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:39:44,983 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,985 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:39:44,994 - 127.0.0.1 - - [03/May/2026 21:39:44] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:39:45,002 - 127.0.0.1 - - [03/May/2026 21:39:45] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:39:45,203 - 127.0.0.1 - - [03/May/2026 21:39:45] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:39:45,210 - 127.0.0.1 - - [03/May/2026 21:39:45] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:39:45,212 - 127.0.0.1 - - [03/May/2026 21:39:45] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:39:45,219 - 127.0.0.1 - - [03/May/2026 21:39:45] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:39:45,230 - 127.0.0.1 - - [03/May/2026 21:39:45] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:39:45,797 - 127.0.0.1 - - [03/May/2026 21:39:45] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-03 21:39:45,809 - 127.0.0.1 - - [03/May/2026 21:39:45] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:39:45,812 - 127.0.0.1 - - [03/May/2026 21:39:45] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:39:45,821 - 127.0.0.1 - - [03/May/2026 21:39:45] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-03 21:39:45,833 - 127.0.0.1 - - [03/May/2026 21:39:45] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-03 21:40:50,988 - 127.0.0.1 - - [03/May/2026 21:40:50] "[35m[1mGET /history?priority=high HTTP/1.1[0m" 500 -
+2026-05-03 21:40:50,999 - 127.0.0.1 - - [03/May/2026 21:40:50] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-03 21:40:51,001 - 127.0.0.1 - - [03/May/2026 21:40:51] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-03 21:40:51,017 - 127.0.0.1 - - [03/May/2026 21:40:51] "[36mGET /history?__debugger__=yes&cmd=resource&f=console.png&s=gYJZELRIxnVCUpenAZM4 HTTP/1.1[0m" 304 -
+2026-05-04 10:16:51,285 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-04 10:16:51,292 - [33mPress CTRL+C to quit[0m
+2026-05-04 10:16:51,294 -  * Restarting with stat
+2026-05-04 10:16:51,709 -  * Debugger is active!
+2026-05-04 10:16:51,710 -  * Debugger PIN: 181-716-772
+2026-05-04 10:17:27,669 - 127.0.0.1 - - [04/May/2026 10:17:27] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-04 10:17:27,937 - 127.0.0.1 - - [04/May/2026 10:17:27] "GET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-05-04 10:17:27,971 - 127.0.0.1 - - [04/May/2026 10:17:27] "GET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-05-04 10:17:28,007 - 127.0.0.1 - - [04/May/2026 10:17:28] "GET /history?__debugger__=yes&cmd=resource&f=console.png&s=GgnI9kL3pewqWg6VPUKK HTTP/1.1" 200 -
+2026-05-04 10:17:28,028 - 127.0.0.1 - - [04/May/2026 10:17:28] "GET /history?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-05-04 10:18:25,895 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 10:18:26,020 -  * Restarting with stat
+2026-05-04 10:18:26,518 -  * Debugger is active!
+2026-05-04 10:18:26,519 -  * Debugger PIN: 181-716-772
+2026-05-04 10:18:47,541 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-04 10:18:47,541 - [33mPress CTRL+C to quit[0m
+2026-05-04 10:18:47,542 -  * Restarting with stat
+2026-05-04 10:18:47,936 -  * Debugger is active!
+2026-05-04 10:18:47,937 -  * Debugger PIN: 181-716-772
+2026-05-04 10:19:30,844 - 127.0.0.1 - - [04/May/2026 10:19:30] "GET / HTTP/1.1" 200 -
+2026-05-04 10:19:30,976 - 127.0.0.1 - - [04/May/2026 10:19:30] "GET /history HTTP/1.1" 200 -
+2026-05-04 10:19:31,053 - 127.0.0.1 - - [04/May/2026 10:19:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-04 10:38:21,070 - 127.0.0.1 - - [04/May/2026 10:38:21] "GET / HTTP/1.1" 200 -
+2026-05-04 10:38:21,125 - 127.0.0.1 - - [04/May/2026 10:38:21] "GET /history HTTP/1.1" 200 -
+2026-05-04 10:38:33,033 - 127.0.0.1 - - [04/May/2026 10:38:33] "GET /history?priority=high HTTP/1.1" 200 -
+2026-05-04 10:38:41,931 - 127.0.0.1 - - [04/May/2026 10:38:41] "GET / HTTP/1.1" 200 -
+2026-05-04 10:38:41,994 - 127.0.0.1 - - [04/May/2026 10:38:41] "GET /history HTTP/1.1" 200 -
+2026-05-04 11:53:54,220 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-04 11:53:54,220 - [33mPress CTRL+C to quit[0m
+2026-05-04 11:53:54,221 -  * Restarting with stat
+2026-05-04 11:53:54,542 -  * Debugger is active!
+2026-05-04 11:53:54,543 -  * Debugger PIN: 181-716-772
+2026-05-04 11:54:36,504 - 127.0.0.1 - - [04/May/2026 11:54:36] "GET / HTTP/1.1" 200 -
+2026-05-04 11:54:36,545 - 127.0.0.1 - - [04/May/2026 11:54:36] "GET /history HTTP/1.1" 200 -
+2026-05-04 11:54:42,150 - 127.0.0.1 - - [04/May/2026 11:54:42] "GET / HTTP/1.1" 200 -
+2026-05-04 11:54:42,187 - 127.0.0.1 - - [04/May/2026 11:54:42] "GET /history HTTP/1.1" 200 -
+2026-05-04 11:54:42,259 - 127.0.0.1 - - [04/May/2026 11:54:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-04 19:05:16,487 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-04 19:05:16,487 - [33mPress CTRL+C to quit[0m
+2026-05-04 19:05:16,488 -  * Restarting with stat
+2026-05-04 19:05:16,923 -  * Debugger is active!
+2026-05-04 19:05:16,944 -  * Debugger PIN: 181-716-772
+2026-05-04 19:07:27,782 - 127.0.0.1 - - [04/May/2026 19:07:27] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-04 19:07:28,100 - 127.0.0.1 - - [04/May/2026 19:07:28] "[36mGET /history?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-04 19:07:28,101 - 127.0.0.1 - - [04/May/2026 19:07:28] "[36mGET /history?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-04 19:07:28,178 - 127.0.0.1 - - [04/May/2026 19:07:28] "GET /history?__debugger__=yes&cmd=resource&f=console.png&s=zJxCKeTpMAXEdXVwsueB HTTP/1.1" 200 -
+2026-05-04 19:07:41,690 - 127.0.0.1 - - [04/May/2026 19:07:41] "GET / HTTP/1.1" 200 -
+2026-05-04 19:07:41,786 - 127.0.0.1 - - [04/May/2026 19:07:41] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-04 19:07:41,806 - 127.0.0.1 - - [04/May/2026 19:07:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-04 19:07:44,071 - 127.0.0.1 - - [04/May/2026 19:07:44] "GET / HTTP/1.1" 200 -
+2026-05-04 19:07:44,131 - 127.0.0.1 - - [04/May/2026 19:07:44] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-04 19:07:44,902 - 127.0.0.1 - - [04/May/2026 19:07:44] "GET / HTTP/1.1" 200 -
+2026-05-04 19:07:44,966 - 127.0.0.1 - - [04/May/2026 19:07:44] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2026-05-04 19:08:53,908 - 127.0.0.1 - - [04/May/2026 19:08:53] "[35m[1mGET /export HTTP/1.1[0m" 500 -
+2026-05-04 19:08:53,953 - 127.0.0.1 - - [04/May/2026 19:08:53] "GET /export?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-05-04 19:08:53,955 - 127.0.0.1 - - [04/May/2026 19:08:53] "GET /export?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-05-04 19:08:53,985 - 127.0.0.1 - - [04/May/2026 19:08:53] "GET /export?__debugger__=yes&cmd=resource&f=console.png&s=zJxCKeTpMAXEdXVwsueB HTTP/1.1" 200 -
+2026-05-04 19:08:54,066 - 127.0.0.1 - - [04/May/2026 19:08:54] "GET /export?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-05-04 19:14:53,550 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-04 19:14:53,550 - [33mPress CTRL+C to quit[0m
+2026-05-04 19:14:53,552 -  * Restarting with stat
+2026-05-04 19:14:53,931 -  * Debugger is active!
+2026-05-04 19:14:53,933 -  * Debugger PIN: 181-716-772
+2026-05-04 19:15:05,211 - 127.0.0.1 - - [04/May/2026 19:15:05] "GET /export HTTP/1.1" 200 -
+2026-05-04 19:15:39,421 - 127.0.0.1 - - [04/May/2026 19:15:39] "GET /export HTTP/1.1" 200 -
+2026-05-04 19:15:52,262 - 127.0.0.1 - - [04/May/2026 19:15:52] "GET /export HTTP/1.1" 200 -
+2026-05-04 19:17:38,408 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:17:38,501 -  * Restarting with stat
+2026-05-04 19:17:38,766 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:17:38,839 -  * Restarting with stat
+2026-05-04 19:17:39,029 -  * Debugger is active!
+2026-05-04 19:17:39,031 -  * Debugger PIN: 181-716-772
+2026-05-04 19:17:39,327 -  * Debugger is active!
+2026-05-04 19:17:39,331 -  * Debugger PIN: 181-716-772
+2026-05-04 19:17:51,119 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-04 19:17:51,119 - [33mPress CTRL+C to quit[0m
+2026-05-04 19:17:51,120 -  * Restarting with stat
+2026-05-04 19:17:51,471 -  * Debugger is active!
+2026-05-04 19:17:51,472 -  * Debugger PIN: 181-716-772
+2026-05-04 19:18:17,734 - 127.0.0.1 - - [04/May/2026 19:18:17] "[32mGET / HTTP/1.1[0m" 302 -
+2026-05-04 19:18:17,825 - 127.0.0.1 - - [04/May/2026 19:18:17] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+2026-05-04 19:18:18,122 - 127.0.0.1 - - [04/May/2026 19:18:18] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-05-04 19:18:18,127 - 127.0.0.1 - - [04/May/2026 19:18:18] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-05-04 19:18:18,188 - 127.0.0.1 - - [04/May/2026 19:18:18] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=dwcUUpM3Bqp4353et0K2 HTTP/1.1" 200 -
+2026-05-04 19:18:18,218 - 127.0.0.1 - - [04/May/2026 19:18:18] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-05-04 19:18:23,122 - 127.0.0.1 - - [04/May/2026 19:18:23] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+2026-05-04 19:18:23,171 - 127.0.0.1 - - [04/May/2026 19:18:23] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-05-04 19:18:23,178 - 127.0.0.1 - - [04/May/2026 19:18:23] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-05-04 19:18:23,230 - 127.0.0.1 - - [04/May/2026 19:18:23] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png&s=dwcUUpM3Bqp4353et0K2 HTTP/1.1[0m" 304 -
+2026-05-04 19:18:23,252 - 127.0.0.1 - - [04/May/2026 19:18:23] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-05-04 19:21:46,056 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-04 19:21:46,056 - [33mPress CTRL+C to quit[0m
+2026-05-04 19:21:46,058 -  * Restarting with stat
+2026-05-04 19:21:46,482 -  * Debugger is active!
+2026-05-04 19:21:46,484 -  * Debugger PIN: 181-716-772
+2026-05-04 19:22:01,274 - 127.0.0.1 - - [04/May/2026 19:22:01] "GET /login HTTP/1.1" 200 -
+2026-05-04 19:24:15,709 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:24:15,769 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:24:15,781 -  * Restarting with stat
+2026-05-04 19:24:15,869 -  * Restarting with stat
+2026-05-04 19:24:16,038 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:24:16,123 -  * Restarting with stat
+2026-05-04 19:24:16,274 -  * Debugger is active!
+2026-05-04 19:24:16,276 -  * Debugger PIN: 181-716-772
+2026-05-04 19:24:16,361 -  * Debugger is active!
+2026-05-04 19:24:16,364 -  * Debugger PIN: 181-716-772
+2026-05-04 19:24:16,571 -  * Debugger is active!
+2026-05-04 19:24:16,573 -  * Debugger PIN: 181-716-772
+2026-05-04 19:24:16,574 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:24:16,651 -  * Restarting with stat
+2026-05-04 19:24:17,072 -  * Debugger is active!
+2026-05-04 19:24:17,074 -  * Debugger PIN: 181-716-772
+2026-05-04 19:24:54,936 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:24:55,085 -  * Restarting with stat
+2026-05-04 19:24:55,122 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:24:55,258 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:24:55,258 -  * Restarting with stat
+2026-05-04 19:24:55,371 -  * Restarting with stat
+2026-05-04 19:24:55,652 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:24:55,702 -  * Debugger is active!
+2026-05-04 19:24:55,704 -  * Debugger PIN: 181-716-772
+2026-05-04 19:24:55,746 -  * Restarting with stat
+2026-05-04 19:24:55,813 -  * Debugger is active!
+2026-05-04 19:24:55,815 -  * Debugger PIN: 181-716-772
+2026-05-04 19:24:55,917 -  * Debugger is active!
+2026-05-04 19:24:55,918 -  * Debugger PIN: 181-716-772
+2026-05-04 19:24:56,255 -  * Debugger is active!
+2026-05-04 19:24:56,257 -  * Debugger PIN: 181-716-772
+2026-05-04 19:29:31,256 - 127.0.0.1 - - [04/May/2026 19:29:31] "GET /login HTTP/1.1" 200 -
+2026-05-04 19:33:35,662 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:33:35,784 -  * Restarting with stat
+2026-05-04 19:33:35,947 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\test_groq.py', reloading
+2026-05-04 19:33:36,047 -  * Restarting with stat
+2026-05-04 19:33:36,664 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\app.py', reloading
+2026-05-04 19:33:36,768 -  * Restarting with stat
+2026-05-04 19:33:36,773 -  * Detected change in 'C:\\Users\\nares\\Downloads\\regulatory-deadline-countdown-widget\\ai-service\\test_groq.py', reloading
+2026-05-04 19:33:36,878 -  * Restarting with stat
