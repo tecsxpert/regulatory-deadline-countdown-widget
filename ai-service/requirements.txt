@@ -1,0 +1,7 @@
+flask
+python-dotenv
+flask-limiter
+groq
+flask
+python-dotenv
+groq
