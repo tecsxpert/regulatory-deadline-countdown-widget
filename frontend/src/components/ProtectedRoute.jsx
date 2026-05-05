@@ -1,11 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-function ProtectedRoute({ children }) {
+function ProtectedRoute({ children, setPage }) {
   const { token } = useContext(AuthContext);
 
+  useEffect(() => {
+    if (!token) {
+      setPage("login");
+    }
+  }, [token, setPage]);
+
+  // ✅ Better UX instead of blank screen
   if (!token) {
-    return <p className="text-center mt-10">Please login first</p>;
+    return <div>Redirecting to login...</div>;
   }
 
   return children;

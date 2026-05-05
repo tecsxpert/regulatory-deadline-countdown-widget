@@ -1,241 +1,233 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import API from "../services/api";
 
 function ListPage({ setEditData, setPage, setSelectedId }) {
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔎 Filters
-  const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [status, setStatus] = useState("");
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
-
-  // 📄 Pagination
   const [pageNum, setPageNum] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
-  // 🤖 AI
-  const [aiLoading, setAiLoading] = useState(false);
-  const [aiResponse, setAiResponse] = useState(null);
+  const [searchInput, setSearchInput] = useState("");
+  const [search, setSearch] = useState("");
 
-  // 📤 Upload
-  const [file, setFile] = useState(null);
-
-  // ⏱ Debounce search
+  // 🔍 Debounce search
   useEffect(() => {
     const timer = setTimeout(() => {
-      setDebouncedSearch(search);
-    }, 500);
+      setPageNum(0); // ✅ reset page
+      setSearch(searchInput.trim());
+    }, 400);
 
     return () => clearTimeout(timer);
-  }, [search]);
+  }, [searchInput]);
 
-  // 🔄 Fetch data
-  const fetchData = () => {
+  // 🔄 Fetch data (FIXED)
+  useEffect(() => {
     setLoading(true);
 
-    API.get("/search", {
-      params: {
-        q: debouncedSearch,
-        status,
-        fromDate,
-        toDate,
-        page: pageNum,
-        size: 5,
-      },
-    })
+    const url = search
+      ? "/deadlines/search"
+      : "/deadlines/all";
+
+    const params = search
+      ? { q: search, page: pageNum, size: 10 }
+      : { page: pageNum, size: 10, sortBy: "deadlineDate" };
+
+    API.get(url, { params })
       .then((res) => {
-        const content = res.data.content || res.data;
-        setData(content);
+        setData(res.data.content || []);
         setTotalPages(res.data.totalPages || 1);
       })
-      .catch((err) => console.error(err))
+      .catch((err) => console.error("Error fetching:", err))
       .finally(() => setLoading(false));
+
+  }, [pageNum, search]);
+
+  // 🎯 STATUS BADGE
+  const getStatusBadge = (status) => {
+    if (status === "COMPLETED") return "bg-green-600 text-white";
+    if (status === "OVERDUE") return "bg-red-600 text-white";
+    if (status === "IN_PROGRESS") return "bg-blue-600 text-white";
+    return "bg-gray-500 text-white";
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [debouncedSearch, status, fromDate, toDate, pageNum]);
+  // 🎯 PRIORITY BADGE
+  const getPriorityBadge = (priority) => {
+    if (priority === "CRITICAL") return "bg-red-700 text-white";
+    if (priority === "HIGH") return "bg-red-500 text-white";
+    if (priority === "MEDIUM") return "bg-yellow-500 text-white";
+    return "bg-green-500 text-white";
+  };
 
-  // ❌ Delete
+  // ❌ DELETE
   const handleDelete = (id) => {
-    API.delete(`/delete/${id}`)
+    if (!window.confirm("Delete this record?")) return;
+
+    API.delete(`/deadlines/${id}`)
       .then(() => {
-        alert("Deleted successfully");
-        fetchData();
+        setData((prev) => prev.filter((item) => item.id !== id));
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error("Delete error:", err));
   };
 
-  // 🤖 AI
-  const handleAI = (item) => {
-    setAiLoading(true);
-    setAiResponse(null);
+  // 📥 EXPORT CSV
+const handleExport = async () => {
+  try {
+    const response = await API.get("/deadlines/export", {
+      responseType: "blob",
+    });
 
-    API.post("/ai/recommend", item)
-      .then((res) => setAiResponse(res.data))
-      .catch((err) => console.error(err))
-      .finally(() => setAiLoading(false));
-  };
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement("a");
 
-  // 📤 Upload
-  const handleUpload = () => {
-    if (!file) return alert("Select file first");
+    link.href = url;
+    link.setAttribute("download", "deadlines.csv");
 
-    if (file.type !== "text/csv") {
-      return alert("Only CSV allowed");
-    }
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
 
-    if (file.size > 2 * 1024 * 1024) {
-      return alert("File too large (max 2MB)");
-    }
-
-    const formData = new FormData();
-    formData.append("file", file);
-
-    API.post("/upload", formData)
-      .then(() => alert("Uploaded successfully"))
-      .catch(() => alert("Upload failed"));
-  };
-
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  } catch (error) {
+    console.error("Export failed:", error);
+    alert("Failed to export CSV");
+  }
+};
 
   return (
-    <div className="p-5">
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-4">
+      <div className="max-w-7xl mx-auto">
 
-      <h2 className="text-xl font-bold mb-4">Regulatory Deadlines</h2>
+        {/* HEADER */}
+        <div className="flex flex-col md:flex-row justify-between items-center bg-white p-4 rounded-xl shadow mb-6 gap-3">
+          <h2 className="text-xl font-bold">Deadlines</h2>
 
-      {/* 🔎 FILTER BAR */}
-      <div className="flex flex-wrap gap-3 mb-4">
+          <button
+  onClick={handleExport}
+  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+>
+  Export CSV
+</button>
 
-        <input
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="border p-2"
-        />
-
-        <select value={status} onChange={(e) => setStatus(e.target.value)} className="border p-2">
-          <option value="">All Status</option>
-          <option value="UPCOMING">UPCOMING</option>
-          <option value="COMPLETED">COMPLETED</option>
-        </select>
-
-        <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} className="border p-2" />
-        <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} className="border p-2" />
-
-        {/* 📥 Export */}
-        <button
-          onClick={() => window.open("http://localhost:8080/export")}
-          className="bg-green-500 text-white px-3 py-1"
-        >
-          Export CSV
-        </button>
-      </div>
-
-      {/* 📤 Upload */}
-      <div className="mb-4">
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button
-          onClick={handleUpload}
-          className="bg-blue-500 text-white px-3 py-1 ml-2"
-        >
-          Upload CSV
-        </button>
-      </div>
-
-      {/* 📊 TABLE */}
-      {data.length === 0 ? (
-        <p className="text-center">No records found</p>
-      ) : (
-        <table className="w-full border">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Type</th>
-              <th>Deadline</th>
-              <th>Status</th>
-              <th>Priority</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {data.map((item) => (
-              <tr key={item.id}>
-
-                <td>{item.title}</td>
-                <td>{item.regulationType}</td>
-                <td>{item.deadlineDate}</td>
-                <td>{item.status}</td>
-                <td>{item.priority}</td>
-
-                <td>
-
-                  <button onClick={() => {
-                    setSelectedId(item.id);
-                    setPage("detail");
-                  }}>
-                    View
-                  </button>
-
-                  <button onClick={() => {
-                    setEditData(item);
-                    setPage("form");
-                  }}>
-                    Edit
-                  </button>
-
-                  <button onClick={() => handleDelete(item.id)}>
-                    Delete
-                  </button>
-
-                  <button onClick={() => handleAI(item)}>
-                    AI Recommend
-                  </button>
-
-                </td>
-
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-
-      {/* 🤖 LOADING */}
-      {aiLoading && <p className="mt-4">Loading AI response...</p>}
-
-      {/* 🤖 RESPONSE */}
-      {aiResponse && (
-        <div className="mt-4 border p-3 bg-gray-100">
-          <h3 className="font-bold">AI Recommendations</h3>
-
-          {aiResponse.map((rec, i) => (
-            <div key={i}>
-              <p><b>Action:</b> {rec.action_type}</p>
-              <p><b>Description:</b> {rec.description}</p>
-              <p><b>Priority:</b> {rec.priority}</p>
-              <hr />
-            </div>
-          ))}
+          <button
+            onClick={() => {
+              setEditData(null);
+              setPage("form");
+            }}
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          >
+            + Create Deadline
+          </button>
         </div>
-      )}
 
-      {/* 📄 Pagination */}
-      <div className="mt-4 flex justify-center space-x-3">
-        <button onClick={() => setPageNum(pageNum - 1)} disabled={pageNum === 0}>
-          Prev
-        </button>
+        {/* SEARCH */}
+        <div className="bg-white p-4 rounded-xl shadow mb-6">
+          <input
+            placeholder="Search..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className="border p-2 rounded-lg w-full"
+          />
+        </div>
 
-        <span>Page {pageNum + 1} of {totalPages}</span>
+        {/* TABLE */}
+        {loading ? (
+          <div className="bg-white p-4 rounded text-center">Loading...</div>
+        ) : data.length === 0 ? (
+          <div className="bg-white p-4 rounded text-center">No records found</div>
+        ) : (
+          <div className="bg-white rounded-xl shadow p-4 overflow-x-auto">
 
-        <button onClick={() => setPageNum(pageNum + 1)} disabled={pageNum + 1 >= totalPages}>
-          Next
-        </button>
+            <table className="w-full min-w-[600px] text-sm">
+              <thead>
+                <tr className="border-b">
+                  <th className="p-2">Title</th>
+                  <th className="p-2">Regulatory Body</th>
+                  <th className="p-2">Deadline</th>
+                  <th className="p-2">Status</th>
+                  <th className="p-2">Priority</th>
+                  <th className="p-2">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {data.map((item) => (
+                  <tr key={item.id} className="border-b hover:bg-gray-50">
+                    <td className="p-2">{item.title}</td>
+                    <td className="p-2">{item.regulatoryBody || "-"}</td>
+                    <td className="p-2">{item.deadlineDate}</td>
+
+                    <td className="p-2">
+                      <span className={`${getStatusBadge(item.status)} px-2 py-1 rounded`}>
+                        {item.status}
+                      </span>
+                    </td>
+
+                    <td className="p-2">
+                      <span className={`${getPriorityBadge(item.priority)} px-2 py-1 rounded`}>
+                        {item.priority}
+                      </span>
+                    </td>
+
+                    <td className="p-2 space-x-2">
+                      <button
+                        onClick={() => {
+                          setSelectedId(item.id);
+                          setPage("detail");
+                        }}
+                        className="text-blue-600"
+                      >
+                        View
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          setEditData(item);
+                          setPage("form");
+                        }}
+                        className="text-yellow-600"
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="text-red-600"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+
+            </table>
+
+          </div>
+        )}
+
+        {/* PAGINATION */}
+        <div className="flex justify-center gap-4 mt-6 text-white">
+          <button
+            onClick={() => setPageNum(pageNum - 1)}
+            disabled={pageNum === 0}
+          >
+            Prev
+          </button>
+
+          <span>
+            Page {pageNum + 1} of {totalPages}
+          </span>
+
+          <button
+            onClick={() => setPageNum(pageNum + 1)}
+            disabled={pageNum + 1 >= totalPages}
+          >
+            Next
+          </button>
+        </div>
+
       </div>
-
     </div>
   );
 }

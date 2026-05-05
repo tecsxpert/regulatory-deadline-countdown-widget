@@ -3,116 +3,159 @@ import API from "../services/api";
 
 function DetailPage({ id, setPage, setEditData }) {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
-  // 🤖 AI state
   const [aiLoading, setAiLoading] = useState(false);
   const [aiResponse, setAiResponse] = useState(null);
 
-  // 🔄 Fetch record
+  // ✅ LOAD DATA
   useEffect(() => {
-    API.get(`/get/${id}`)
+    API.get(`/deadlines/${id}`)
       .then((res) => setData(res.data))
-      .catch((err) => console.error(err));
+      .catch(() => setError("Failed to load deadline"));
   }, [id]);
 
-  if (!data) return <p className="p-5">Loading...</p>;
+  if (error) {
+    return <p className="text-center text-red-200 mt-10">{error}</p>;
+  }
 
-  // 🎯 Badge color logic
-  const badgeColor =
-    data.priority === "HIGH"
-      ? "bg-red-400"
-      : data.priority === "MEDIUM"
-      ? "bg-yellow-400"
-      : "bg-green-400";
+  if (!data) {
+    return <p className="text-center mt-10 text-white">Loading...</p>;
+  }
 
-  // 🤖 AI CALL
+  // 🎯 PRIORITY BADGE
+  const getPriorityBadge = (priority) => {
+    if (priority === "CRITICAL") return "bg-red-700 text-white";
+    if (priority === "HIGH") return "bg-red-500 text-white";
+    if (priority === "MEDIUM") return "bg-yellow-500 text-white";
+    return "bg-green-500 text-white";
+  };
+
+  // 🎯 STATUS BADGE
+  const getStatusBadge = (status) => {
+    if (status === "COMPLETED") return "bg-green-600 text-white";
+    if (status === "OVERDUE") return "bg-red-600 text-white";
+    if (status === "IN_PROGRESS") return "bg-blue-600 text-white";
+    return "bg-gray-500 text-white";
+  };
+
+  // 🗑️ DELETE (SAFE)
+  const handleDelete = () => {
+    if (!window.confirm("Are you sure you want to delete this deadline?")) {
+      return;
+    }
+
+    API.delete(`/deadlines/${data.id}`)
+      .then(() => {
+        alert("Deleted successfully");
+        setPage("list");
+      })
+      .catch(() => alert("Delete failed"));
+  };
+
+  // 🤖 AI CALL (OPTIONAL FEATURE)
   const handleAI = () => {
     setAiLoading(true);
     setAiResponse(null);
 
     API.post("/ai/recommend", data)
-      .then((res) => {
-        setAiResponse(res.data);
-      })
-      .catch((err) => console.error(err))
+      .then((res) => setAiResponse(res.data))
+      .catch(() => alert("AI service not available"))
       .finally(() => setAiLoading(false));
   };
 
   return (
-    <div className="p-5">
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-6">
 
-      <h2 className="text-xl font-bold mb-4">Detail Page</h2>
-
-      <p><b>Title:</b> {data.title}</p>
-      <p><b>Description:</b> {data.description}</p>
-      <p><b>Type:</b> {data.regulationType}</p>
-      <p><b>Deadline:</b> {data.deadlineDate}</p>
-      <p><b>Status:</b> {data.status}</p>
-
-      {/* 🎯 SCORE BADGE */}
-      <div className="mt-3">
-        <span className={`${badgeColor} px-3 py-1 rounded text-white`}>
-          Priority: {data.priority}
-        </span>
+      {/* HEADER */}
+      <div className="bg-white p-4 rounded-xl shadow mb-6">
+        <h2 className="text-2xl font-bold text-gray-700">
+          Deadline Details
+        </h2>
       </div>
 
-      {/* 🔧 ACTION BUTTONS */}
-      <div className="mt-4 space-x-2">
+      {/* MAIN CARD */}
+      <div className="bg-white p-6 rounded-xl shadow max-w-2xl mx-auto">
 
-        {/* Edit */}
-        <button
-          onClick={() => {
-            setEditData(data);
-            setPage("form");
-          }}
-          className="bg-yellow-500 text-white px-3 py-1"
-        >
-          Edit
-        </button>
+        <h3 className="text-xl font-bold mb-3">{data.title}</h3>
 
-        {/* Delete */}
-        <button
-          onClick={() => {
-            API.delete(`/delete/${data.id}`)
-              .then(() => {
-                alert("Deleted successfully");
-                setPage("list");
-              })
-              .catch((err) => console.error(err));
-          }}
-          className="bg-red-500 text-white px-3 py-1"
-        >
-          Delete
-        </button>
+        <p className="text-gray-600 mb-4">{data.description}</p>
 
-        {/* 🤖 AI Button */}
-        <button
-          onClick={handleAI}
-          className="bg-purple-500 text-white px-3 py-1"
-        >
-          AI Recommend
-        </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm mb-4">
+
+          <p><b>Regulatory Body:</b> {data.regulatoryBody}</p>
+          <p><b>Deadline:</b> {data.deadlineDate}</p>
+
+          <div>
+            <b>Status:</b>{" "}
+            <span className={`${getStatusBadge(data.status)} px-2 py-1 rounded`}>
+              {data.status}
+            </span>
+          </div>
+
+          <div>
+            <b>Priority:</b>{" "}
+            <span className={`${getPriorityBadge(data.priority)} px-2 py-1 rounded`}>
+              {data.priority}
+            </span>
+          </div>
+
+        </div>
+
+        {/* ACTIONS */}
+        <div className="flex flex-wrap gap-3">
+
+          <button
+            onClick={() => {
+              setEditData(data);
+              setPage("form");
+            }}
+            className="bg-yellow-500 text-white px-4 py-2 rounded"
+          >
+            Edit
+          </button>
+
+          <button
+            onClick={handleDelete}
+            className="bg-red-500 text-white px-4 py-2 rounded"
+          >
+            Delete
+          </button>
+
+          <button
+            onClick={handleAI}
+            className="bg-purple-500 text-white px-4 py-2 rounded"
+          >
+            AI Recommend
+          </button>
+
+        </div>
 
       </div>
 
-      {/* 🤖 LOADING */}
+      {/* 🤖 AI LOADING */}
       {aiLoading && (
-        <p className="mt-4 text-center">Loading AI response...</p>
+        <div className="bg-white p-4 rounded shadow mt-4 text-center">
+          🔄 Generating AI recommendations...
+        </div>
       )}
 
-      {/* 🤖 RESPONSE CARD */}
+      {/* 🤖 AI RESPONSE */}
       {aiResponse && (
-        <div className="mt-4 border p-4 bg-gray-100 rounded">
-          <h3 className="font-bold mb-2">AI Recommendations</h3>
+        <div className="bg-white p-5 rounded-xl shadow mt-4 max-w-2xl mx-auto">
 
-          {aiResponse.map((rec, index) => (
-            <div key={index} className="mb-3">
+          <h3 className="font-semibold mb-3">
+            AI Recommendations
+          </h3>
+
+          {aiResponse.map((rec, i) => (
+            <div key={i} className="border-b pb-2 mb-2">
               <p><b>Action:</b> {rec.action_type}</p>
               <p><b>Description:</b> {rec.description}</p>
               <p><b>Priority:</b> {rec.priority}</p>
-              <hr className="mt-2" />
             </div>
           ))}
+
         </div>
       )}
 

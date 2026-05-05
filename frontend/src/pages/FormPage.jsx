@@ -3,136 +3,230 @@ import API from "../services/api";
 
 function FormPage({ editData, setPage }) {
 
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     title: "",
     description: "",
-    regulationType: "",
+    regulatoryBody: "",
+    jurisdiction: "",
+    category: "",
+    responsibleTeam: "",
+    ownerName: "",
+    ownerEmail: "",
     deadlineDate: "",
-    status: "UPCOMING",
-    priority: "MEDIUM",
+    status: "",       // ✅ empty for placeholder
+    priority: "",     // ✅ empty for placeholder
   });
 
-  // 🔁 Prefill data when editing
+  const [error, setError] = useState("");
+
+  // 🔁 Prefill (EDIT MODE)
   useEffect(() => {
     if (editData) {
-      setFormData(editData);
+      setForm({
+        title: editData.title || "",
+        description: editData.description || "",
+        regulatoryBody: editData.regulatoryBody || "",
+        jurisdiction: editData.jurisdiction || "",
+        category: editData.category || "",
+        responsibleTeam: editData.responsibleTeam || "",
+        ownerName: editData.ownerName || "",
+        ownerEmail: editData.ownerEmail || "",
+        deadlineDate: editData.deadlineDate || "",
+        status: editData.status || "UPCOMING",
+        priority: editData.priority || "MEDIUM",
+      });
     }
   }, [editData]);
 
-  // 🔄 Handle input change
+  // 🔄 Handle input
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setForm({
+      ...form,
       [e.target.name]: e.target.value,
     });
   };
 
-  // ✅ SUBMIT (FIXED)
+  // ✅ Validation
+  const validate = () => {
+    if (!form.title.trim()) return "Title is required";
+    if (!form.deadlineDate) return "Deadline date required";
+    if (!form.ownerEmail.includes("@")) return "Valid email required";
+    if (!form.status) return "Please select status";       // ✅ added
+    if (!form.priority) return "Please select priority";   // ✅ added
+    return "";
+  };
+
+  // 🚀 Submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation
-    if (!formData.title || !formData.deadlineDate) {
-      alert("Title and Deadline are required");
+    const validationError = validate();
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
-    console.log("Submitting:", formData); // debug
+    setError("");
+
+    const payload = {
+      title: form.title,
+      description: form.description,
+      regulatoryBody: form.regulatoryBody,
+      jurisdiction: form.jurisdiction,
+      category: form.category,
+      responsibleTeam: form.responsibleTeam,
+      ownerName: form.ownerName,
+      ownerEmail: form.ownerEmail,
+      deadlineDate: form.deadlineDate,
+      status: form.status,
+      priority: form.priority,
+    };
 
     if (editData) {
-      // ✏️ UPDATE
-      API.put(`/update/${editData.id}`, formData)
+      API.put(`/deadlines/${editData.id}`, payload)
         .then(() => {
           alert("Updated successfully");
-          setPage("list"); // 🔥 go back to list
+          setPage("list");
         })
-        .catch((err) => {
-          console.error(err);
-          alert("Update failed");
-        });
+        .catch(() => setError("Update failed"));
     } else {
-      // ➕ CREATE
-      API.post("/create", formData)
+      API.post("/deadlines/create", payload)
         .then(() => {
           alert("Created successfully");
-          setPage("list"); // 🔥 go back to list
+          setPage("list");
         })
-        .catch((err) => {
-          console.error(err);
-          alert("Create failed");
-        });
+        .catch(() => setError("Create failed"));
     }
   };
 
   return (
-    <div className="p-5">
-      <h2 className="text-xl font-bold mb-4">
-        {editData ? "Edit Deadline" : "Create Deadline"}
-      </h2>
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center p-6">
 
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="bg-white p-8 rounded-xl shadow w-full max-w-xl">
 
-        <input
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          placeholder="Title"
-          className="border p-2 w-full"
-        />
+        <h2 className="text-xl font-bold mb-4 text-center">
+          {editData ? "Edit Deadline" : "Create Deadline"}
+        </h2>
 
-        <input
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          placeholder="Description"
-          className="border p-2 w-full"
-        />
+        {error && (
+          <div className="bg-red-100 text-red-600 p-2 mb-4 rounded text-center">
+            {error}
+          </div>
+        )}
 
-        <input
-          name="regulationType"
-          value={formData.regulationType}
-          onChange={handleChange}
-          placeholder="Type"
-          className="border p-2 w-full"
-        />
+        <form onSubmit={handleSubmit} className="space-y-4">
 
-        <input
-          type="date"
-          name="deadlineDate"
-          value={formData.deadlineDate}
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
+          <input
+            name="title"
+            placeholder="Title"
+            value={form.title}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          />
 
-        <select
-          name="status"
-          value={formData.status}
-          onChange={handleChange}
-          className="border p-2 w-full"
-        >
-          <option value="UPCOMING">UPCOMING</option>
-          <option value="COMPLETED">COMPLETED</option>
-        </select>
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={form.description}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          />
 
-        <select
-          name="priority"
-          value={formData.priority}
-          onChange={handleChange}
-          className="border p-2 w-full"
-        >
-          <option value="LOW">LOW</option>
-          <option value="MEDIUM">MEDIUM</option>
-          <option value="HIGH">HIGH</option>
-        </select>
+          <input
+            name="regulatoryBody"
+            placeholder="Regulatory Body"
+            value={form.regulatoryBody}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          />
 
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 w-full"
-        >
-          {editData ? "Update" : "Submit"}
-        </button>
+          <input
+            name="jurisdiction"
+            placeholder="Jurisdiction"
+            value={form.jurisdiction}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          />
 
-      </form>
+          <input
+            name="category"
+            placeholder="Category"
+            value={form.category}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          />
+
+          <input
+            name="responsibleTeam"
+            placeholder="Responsible Team"
+            value={form.responsibleTeam}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          />
+
+          <input
+            name="ownerName"
+            placeholder="Owner Name"
+            value={form.ownerName}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          />
+
+          <input
+            name="ownerEmail"
+            placeholder="Owner Email"
+            value={form.ownerEmail}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          />
+
+          <input
+            type="date"
+            name="deadlineDate"
+            value={form.deadlineDate}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          />
+
+          {/* STATUS + PRIORITY */}
+          <div className="grid grid-cols-2 gap-3">
+
+            {/* STATUS */}
+            <select
+              name="status"
+              value={form.status}
+              onChange={handleChange}
+              className="border p-3 rounded"
+            >
+              <option value="" disabled>Select Status</option>
+              <option value="UPCOMING">Upcoming</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="COMPLETED">Completed</option>
+              <option value="OVERDUE">Overdue</option>
+            </select>
+
+            {/* PRIORITY */}
+            <select
+              name="priority"
+              value={form.priority}
+              onChange={handleChange}
+              className="border p-3 rounded"
+            >
+              <option value="" disabled>Select Priority</option>
+              <option value="LOW">Low</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="HIGH">High</option>
+            </select>
+
+          </div>
+
+          <button className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700">
+            {editData ? "Update" : "Create"}
+          </button>
+
+        </form>
+
+      </div>
     </div>
   );
 }

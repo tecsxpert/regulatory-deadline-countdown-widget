@@ -6,7 +6,7 @@ function LoginPage({ setPage }) {
   const { login } = useContext(AuthContext);
 
   const [form, setForm] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -16,88 +16,118 @@ function LoginPage({ setPage }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ✅ Validation
-    if (!form.username || !form.password) {
-      setError("All fields are required");
+    if (!form.email.trim() || !form.password) {
+      setError("Please fill all fields");
       return;
     }
 
     setLoading(true);
     setError("");
 
-    API.post("/login", form)
+    API.post("/auth/login", {
+      email: form.email.trim(),
+      password: form.password,
+    })
       .then((res) => {
-        login(res.data.token); // save token
-        setPage("list");
+        login(res.data); // ✅ FIXED
+        setPage("dashboard");
       })
       .catch((err) => {
-        console.error(err);
-        setError("Invalid username or password");
+        const msg =
+          err.response?.data?.message ||
+          "Invalid email or password";
+        setError(msg);
       })
-      .finally(() => {
-        setLoading(false);
-      });
+      .finally(() => setLoading(false));
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="min-h-screen flex flex-col md:flex-row">
 
-      <div className="bg-white shadow-lg rounded-lg p-6 w-80">
-
-        <h2 className="text-2xl font-semibold text-center mb-4">
-          Login
-        </h2>
-
-        {error && (
-          <p className="text-red-500 text-sm mb-3 text-center">
-            {error}
+      {/* LEFT */}
+      <div className="hidden md:flex w-1/2 bg-gradient-to-br from-blue-600 to-indigo-700 text-white items-center justify-center p-10">
+        <div>
+          <h1 className="text-4xl font-bold mb-4">
+            Regulatory Tracker
+          </h1>
+          <p className="text-lg text-blue-100">
+            Manage deadlines, track compliance, and stay ahead.
           </p>
-        )}
+        </div>
+      </div>
 
-        <form onSubmit={handleSubmit} className="space-y-3">
+      {/* RIGHT */}
+      <div className="flex w-full md:w-1/2 items-center justify-center bg-gray-100 p-6">
 
-          {/* Username */}
-          <input
-            type="text"
-            placeholder="Username"
-            value={form.username}
-            onChange={(e) =>
-              setForm({ ...form, username: e.target.value })
-            }
-            className="border p-2 w-full rounded"
-          />
+        <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-sm">
 
-          {/* Password */}
-          <input
-            type="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={(e) =>
-              setForm({ ...form, password: e.target.value })
-            }
-            className="border p-2 w-full rounded"
-          />
+          <h2 className="text-2xl font-bold text-center mb-2">
+            Welcome Back 👋
+          </h2>
 
-          {/* Button */}
-          <button
-            type="submit"
-            className="bg-blue-500 text-white w-full py-2 rounded"
-            disabled={loading}
-          >
-            {loading ? "Logging in..." : "Login"}
-          </button>
-
-        </form>
-
-        {/* Extra links */}
-        <div className="text-center mt-3 text-sm">
-          <p className="text-blue-500 cursor-pointer">
-            Forgot Password?
+          <p className="text-center text-gray-500 mb-6">
+            Login to continue
           </p>
 
-          <p className="mt-1 text-gray-600">
-            New user? <span className="text-blue-500">Register</span>
-          </p>
+          {error && (
+            <div className="bg-red-100 text-red-600 p-2 text-sm rounded mb-4 text-center">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+
+            <input
+              type="email"
+              placeholder="Email"
+              value={form.email}
+              onChange={(e) =>
+                setForm({ ...form, email: e.target.value })
+              }
+              className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-400"
+            />
+
+            <input
+              type="password"
+              placeholder="Password"
+              value={form.password}
+              onChange={(e) =>
+                setForm({ ...form, password: e.target.value })
+              }
+              className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-400"
+            />
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+            >
+              {loading ? "Signing in..." : "Login"}
+            </button>
+
+          </form>
+
+          <div className="text-center mt-5 text-sm">
+
+            <p
+              onClick={() => setPage("forgot")}
+              className="text-blue-500 cursor-pointer hover:underline"
+            >
+              Forgot Password?
+            </p>
+
+            <p className="mt-2 text-gray-600">
+              New user?{" "}
+              <span
+                onClick={() => setPage("register")}
+                className="text-blue-500 cursor-pointer hover:underline"
+              >
+                Create Account
+              </span>
+            </p>
+
+          </div>
+
         </div>
 
       </div>
