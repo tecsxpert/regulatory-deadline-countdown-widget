@@ -1,36 +1,48 @@
-from flask import Flask, jsonify
-from routes.describe import describe_bp
-from routes.recommend import recommend_bp
-from routes.generate_report import generate_report_bp   # ✅ NEW
+from flask import Flask, jsonify, request
+import time
+import hashlib
+import json
 
 app = Flask(__name__)
 
-# Register routes
-app.register_blueprint(describe_bp)
-app.register_blueprint(recommend_bp)
-app.register_blueprint(generate_report_bp)   # ✅ NEW
+start_time = time.time()
+ai_cache = {}
 
-# Health check
-@app.route("/health")
+def make_cache_key(data):
+    return hashlib.sha256(
+        json.dumps(data, sort_keys=True).encode()
+    ).hexdigest()
+
+@app.route("/health", methods=["GET"])
 def health():
     return jsonify({
         "service": "ai-service",
-        "status": "ok"
+        "status": "ok",
+        "model": "llama-3.3-70b",
+        "uptime_seconds": round(time.time() - start_time, 2),
+        "cache": "in-memory-temporary"
     })
 
-# Home route
-@app.route("/")
-def home():
-    return jsonify({
-        "message": "AI service running",
-        "endpoints": [
-            "/health",
-            "/describe",
-            "/recommend",
-            "/generate-report"   # ✅ NEW
-        ]
-    })
+@app.route("/describe", methods=["POST"])
+def describe():
+    data = request.get_json()
 
-# Run app (ONLY ONCE)
+    key = make_cache_key(data)
+
+    if key in ai_cache:
+        return jsonify({
+            **ai_cache[key],
+            "from_cache": True
+        })
+
+    result = {
+        "summary": "AI generated description here",
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+        "from_cache": False
+    }
+
+    ai_cache[key] = result
+    return jsonify(result)
+
 if __name__ == "__main__":
     app.run(port=5000, debug=True)

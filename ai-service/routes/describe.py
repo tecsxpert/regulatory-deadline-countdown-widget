@@ -4,8 +4,8 @@ from datetime import datetime
 import json
 
 from services.groq_client import call_groq
+from services.cache_service import make_cache_key, get_cache, set_cache
 
-# Create blueprint
 describe_bp = Blueprint("describe", __name__)
 
 @describe_bp.route("/describe", methods=["POST"])
@@ -21,10 +21,22 @@ def describe():
         if field not in data or not data[field]:
             return jsonify({"error": f"{field} is required"}), 400
 
-    # Load prompt template
+    # Redis cache check
+    cache_key = make_cache_key({
+        "endpoint": "describe",
+        "title": data["title"],
+        "category": data["category"],
+        "due_date": data["due_date"],
+        "description": data["description"]
+    })
+
+    cached_response = get_cache(cache_key)
+    if cached_response:
+        cached_response["cached"] = True
+        return jsonify(cached_response), 200
+
     prompt_template = Path("prompts/describe_prompt.txt").read_text()
 
-    # Fill prompt
     prompt = prompt_template.format(
         title=data["title"],
         category=data["category"],
@@ -33,10 +45,8 @@ def describe():
     )
 
     try:
-        # Call AI
         ai_response = call_groq(prompt)
 
-        # Try parsing JSON
         try:
             parsed_response = json.loads(ai_response)
         except json.JSONDecodeError:
@@ -47,8 +57,10 @@ def describe():
                 "next_step": "Review manually"
             }
 
-        # Add timestamp
         parsed_response["generated_at"] = datetime.utcnow().isoformat()
+        parsed_response["cached"] = False
+
+        set_cache(cache_key, parsed_response)
 
         return jsonify(parsed_response), 200
 
@@ -59,5 +71,6 @@ def describe():
             "reason": str(e),
             "next_step": "Try again later",
             "generated_at": datetime.utcnow().isoformat(),
-            "is_fallback": True
+            "is_fallback": True,
+            "cached": False
         }), 200
