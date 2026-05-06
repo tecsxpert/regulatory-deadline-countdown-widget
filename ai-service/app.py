@@ -1,48 +1,48 @@
-from flask import Flask, jsonify, request
-import time
-import hashlib
-import json
+from flask import Flask, jsonify
+from flask_talisman import Talisman
+
+from routes.describe import describe_bp
+from routes.recommend import recommend_bp
+from routes.health import health_bp
+from routes.generate_report import generate_report_bp
 
 app = Flask(__name__)
 
-start_time = time.time()
-ai_cache = {}
+# Security Headers
+Talisman(
+    app,
+    force_https=False,
+    content_security_policy={
+        "default-src": "'self'"
+    }
+)
 
-def make_cache_key(data):
-    return hashlib.sha256(
-        json.dumps(data, sort_keys=True).encode()
-    ).hexdigest()
+@app.after_request
+def add_security_headers(response):
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    response.headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
+    return response
 
-@app.route("/health", methods=["GET"])
-def health():
+# Register Blueprints
+app.register_blueprint(describe_bp)
+app.register_blueprint(recommend_bp)
+app.register_blueprint(health_bp)
+app.register_blueprint(generate_report_bp)
+
+@app.route("/")
+def home():
     return jsonify({
-        "service": "ai-service",
-        "status": "ok",
-        "model": "llama-3.3-70b",
-        "uptime_seconds": round(time.time() - start_time, 2),
-        "cache": "in-memory-temporary"
+        "message": "AI service running",
+        "endpoints": [
+            "/health",
+            "/describe",
+            "/recommend",
+            "/generate-report"
+        ]
     })
 
-@app.route("/describe", methods=["POST"])
-def describe():
-    data = request.get_json()
-
-    key = make_cache_key(data)
-
-    if key in ai_cache:
-        return jsonify({
-            **ai_cache[key],
-            "from_cache": True
-        })
-
-    result = {
-        "summary": "AI generated description here",
-        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
-        "from_cache": False
-    }
-
-    ai_cache[key] = result
-    return jsonify(result)
-
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    app.run(debug=True, port=5000)

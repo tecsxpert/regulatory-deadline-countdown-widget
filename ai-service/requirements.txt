@@ -4,3 +4,4 @@ flask-limiter
 groq
 redis
 requests
+flask-talisman

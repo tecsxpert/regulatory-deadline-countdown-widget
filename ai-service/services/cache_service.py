@@ -1,34 +1,51 @@
-import os
 import json
 import hashlib
-import redis
+import time
+from threading import Lock
 
-redis_client = redis.Redis(
-    host=os.getenv("REDIS_HOST", "localhost"),
-    port=int(os.getenv("REDIS_PORT", 6379)),
-    decode_responses=True
-)
+# Simple in-memory cache with TTL and thread safety
+class MemoryCache:
+    def __init__(self):
+        self.cache = {}
+        self.lock = Lock()
+        self.ttl = 15 * 60  # 15 minutes
 
-CACHE_TTL = 15 * 60
+    def make_key(self, data):
+        """Create cache key from data dictionary"""
+        raw = json.dumps(data, sort_keys=True)
+        return hashlib.sha256(raw.encode()).hexdigest()
+
+    def get(self, key):
+        """Get value from cache by key"""
+        with self.lock:
+            if key in self.cache:
+                entry = self.cache[key]
+                # Check if expired
+                if time.time() < entry['expires_at']:
+                    return entry['data']
+                else:
+                    del self.cache[key]
+            return None
+
+    def set(self, key, data):
+        """Set value in cache with TTL"""
+        with self.lock:
+            self.cache[key] = {
+                'data': data,
+                'expires_at': time.time() + self.ttl
+            }
+
+# Global cache instance
+cache = MemoryCache()
 
 def make_cache_key(data):
     """Create cache key from data dictionary"""
-    raw = json.dumps(data, sort_keys=True)
-    return hashlib.sha256(raw.encode()).hexdigest()
+    return cache.make_key(data)
 
 def get_cache(cache_key):
     """Get value from cache by key"""
-    try:
-        cached = redis_client.get(cache_key)
-        if cached:
-            return json.loads(cached)
-        return None
-    except Exception:
-        return None
+    return cache.get(cache_key)
 
 def set_cache(cache_key, data):
     """Set value in cache with TTL"""
-    try:
-        redis_client.setex(cache_key, CACHE_TTL, json.dumps(data))
-    except Exception:
-        pass
+    cache.set(cache_key, data)
