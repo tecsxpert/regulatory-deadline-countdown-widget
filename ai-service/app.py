@@ -1,3 +1,4 @@
+from services.model_loader import model
 from flask import Flask, jsonify
 from flask_talisman import Talisman
 
