@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Regulatory Countdown Widget</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 40px;
+        background: #f4f6f8;
+      }
+
+      .card {
+        background: white;
+        padding: 25px;
+        max-width: 750px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+      }
+
+      input,
+      button,
+      select {
+        padding: 10px;
+        font-size: 15px;
+        margin-top: 10px;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      #result {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        background: #f0f0f0;
+      }
+
+      #history {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+
+      canvas {
+        margin-top: 25px;
+      }
+
+      .high {
+        color: red;
+        font-weight: bold;
+      }
+      .medium {
+        color: orange;
+        font-weight: bold;
+      }
+      .low {
+        color: green;
+        font-weight: bold;
+      }
+      .expired {
+        color: darkred;
+        font-weight: bold;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h2>Regulatory Deadline Dashboard</h2>
+
+      <input type="date" id="dateInput" />
+      <button onclick="checkDeadline()">Check</button>
+
+      <div id="result">Select a date and click Check</div>
+
+      <hr />
+
+      <h3>History Filter</h3>
+
+      <!-- 🔽 NEW DROPDOWN -->
+      <select id="filter" onchange="loadHistory()">
+        <option value="">All</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+        <option value="expired">Expired</option>
+      </select>
+
+      <div id="history">
+        <h3>Recent History</h3>
+        <ul id="historyList"></ul>
+      </div>
+
+      <canvas id="priorityChart"></canvas>
+    </div>
+
+    <script>
+      let chart = null;
+
+      async function checkDeadline() {
+        const date = document.getElementById("dateInput").value;
+
+        const response = await fetch("/deadline", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ date }),
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+          document.getElementById("result").innerText = data.error;
+          return;
+        }
+
+        document.getElementById("result").innerHTML =
+          "<b>Date:</b> " +
+          data.date +
+          "<br>" +
+          "<b>Days Left:</b> " +
+          data.days_left +
+          "<br>" +
+          "<b>Status:</b> " +
+          data.status +
+          "<br>" +
+          "<b>Priority:</b> <span class='" +
+          data.priority +
+          "'>" +
+          data.priority +
+          "</span>";
+
+        loadHistory();
+      }
+
+      async function loadHistory() {
+        const filter = document.getElementById("filter").value;
+
+        let url = "/history";
+        if (filter) {
+          url += "?priority=" + filter;
+        }
+
+        const response = await fetch(url);
+        const history = await response.json();
+
+        const list = document.getElementById("historyList");
+        list.innerHTML = "";
+
+        const counts = { high: 0, medium: 0, low: 0, expired: 0 };
+
+        history
+          .slice()
+          .reverse()
+          .forEach((item) => {
+            const li = document.createElement("li");
+
+            li.innerHTML =
+              item.date +
+              " | " +
+              item.days_left +
+              " days | " +
+              item.status +
+              " | <span class='" +
+              item.priority +
+              "'>" +
+              item.priority +
+              "</span>";
+
+            list.appendChild(li);
+
+            if (counts[item.priority] !== undefined) {
+              counts[item.priority]++;
+            }
+          });
+
+        drawChart(counts);
+      }
+
+      function drawChart(counts) {
+        const ctx = document.getElementById("priorityChart");
+
+        if (chart) chart.destroy();
+
+        chart = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: ["High", "Medium", "Low", "Expired"],
+            datasets: [
+              {
+                label: "Deadlines",
+                data: [counts.high, counts.medium, counts.low, counts.expired],
+              },
+            ],
+          },
+        });
+      }
+
+      loadHistory();
+    </script>
+  </body>
+</html>

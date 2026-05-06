@@ -1,3 +1,25 @@
+HEAD
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+
+@app.get("/")
+def home():
+    return jsonify({
+        "service": "tool87-ai-service",
+        "message": "AI service placeholder is running"
+    })
+
+
+@app.get("/health")
+def health():
+    return jsonify({"status": "UP"}), 200
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+
 from flask import (
     Flask,
     request,
@@ -246,3 +268,4 @@ def export():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
+>>>>>>> e755dccbe877b0d05a51b235dd687167cc15c00e

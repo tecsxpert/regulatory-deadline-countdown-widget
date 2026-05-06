@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Apr 23 14:49:29 IST 2026
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1776935969814
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.springframework.boot\:spring-boot-starter-parent\:pom\:3.3.5 from/to central (https\://repo.maven.apache.org/maven2)\: C\:\\Users\\HP\\OneDrive\\Documents\\New project\\regulatory-deadline-countdown-widget\\backend\\.mvn-repo\\org\\springframework\\boot\\spring-boot-starter-parent\\3.3.5\\spring-boot-starter-parent-3.3.5.pom.4832114387924687749.tmp.10123425295230944219.tmp
