@@ -1,0 +1,8 @@
+services:
+  ai-service:
+    build: ./ai-service
+    container_name: ai-service
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./ai-service/.env
