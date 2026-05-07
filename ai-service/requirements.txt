@@ -1,7 +1,8 @@
-flask
-python-dotenv
-flask-limiter
-groq
-redis
-requests
-flask-talisman
+Flask==3.0.3
+flask-talisman==1.1.0
+groq==0.5.0
+python-dotenv==1.0.1
+requests==2.31.0
+redis==5.0.4
+flask-limiter==3.5.0
+gunicorn==22.0.0
