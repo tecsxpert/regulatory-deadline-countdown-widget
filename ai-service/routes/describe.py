@@ -1,3 +1,4 @@
+from services.fallback import fallback_response
 from flask import Blueprint, request, jsonify
 from pathlib import Path
 from datetime import datetime
@@ -47,15 +48,18 @@ def describe():
     try:
         ai_response = call_groq(prompt)
 
-        try:
-            parsed_response = json.loads(ai_response)
-        except json.JSONDecodeError:
-            parsed_response = {
-                "summary": ai_response,
-                "risk_level": "Medium",
-                "reason": "AI response was not valid JSON",
-                "next_step": "Review manually"
-            }
+        if ai_response.get("is_fallback"):
+            parsed_response = ai_response
+        else:
+            try:
+                parsed_response = json.loads(ai_response["result"])
+            except json.JSONDecodeError:
+                parsed_response = {
+                    "summary": ai_response["result"],
+                    "risk_level": "Medium",
+                    "reason": "AI response was not valid JSON",
+                    "next_step": "Review manually"
+                }
 
         parsed_response["generated_at"] = datetime.utcnow().isoformat()
         parsed_response["cached"] = False
