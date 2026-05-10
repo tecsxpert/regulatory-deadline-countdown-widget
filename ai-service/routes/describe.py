@@ -36,7 +36,8 @@ def describe():
         cached_response["cached"] = True
         return jsonify(cached_response), 200
 
-    prompt_template = Path("prompts/describe_prompt.txt").read_text()
+    prompts_dir = Path(__file__).resolve().parents[1] / "prompts"
+    prompt_template = (prompts_dir / "describe_prompt.txt").read_text()
 
     prompt = prompt_template.format(
         title=data["title"],

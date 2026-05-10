@@ -1,5 +1,9 @@
+import os
+
+from dotenv import load_dotenv
 from services.model_loader import model
 from flask import Flask, jsonify
+from flask_cors import CORS
 from flask_talisman import Talisman
 
 from routes.describe import describe_bp
@@ -7,7 +11,9 @@ from routes.recommend import recommend_bp
 from routes.health import health_bp
 from routes.generate_report import generate_report_bp
 
+load_dotenv()
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Security Headers
 Talisman(
@@ -46,4 +52,8 @@ def home():
     })
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 5000)),
+        debug=os.getenv("FLASK_ENV", "production") == "development"
+    )
