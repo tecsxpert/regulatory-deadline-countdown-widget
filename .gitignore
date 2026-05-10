@@ -1,5 +1,18 @@
-.env
-target/
-node_modules/
+# Python caches and bytecode
 __pycache__/
-chroma_data/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env
+
+# OS files
+.DS_Store
+
+# Application data
+*.sqlite3
+*.log
+
+# IDE files
+.vscode/
